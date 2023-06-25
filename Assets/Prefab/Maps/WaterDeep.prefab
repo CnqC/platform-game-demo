@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3125583442593452899}
   - component: {fileID: 5322049692748343394}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Water_Surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3125583442593452899
 Transform:
@@ -95,12 +95,12 @@ GameObject:
   - component: {fileID: 1251830692049541798}
   - component: {fileID: 2078684015520559511}
   - component: {fileID: 5226586426993901167}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: WaterDeep
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1251830692049541798
 Transform:
@@ -156,8 +156,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -86086131
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e070ba3d10effaa45b8656a4fe798570, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
