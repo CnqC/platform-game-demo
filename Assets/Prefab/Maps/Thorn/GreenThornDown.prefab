@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5997147068926643490}
   - component: {fileID: 3509609412306270458}
+  - component: {fileID: -8886997276646790382}
   m_Layer: 0
   m_Name: GreenThornDown
   m_TagString: Untagged
@@ -84,3 +85,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &-8886997276646790382
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500601882055878686}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.0277778, y: 0.8888889}
+    newSize: {x: 1.0277778, y: 0.8888889}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.4327536, y: 0.40880963}
+      - {x: 0.32899845, y: 0.41760918}
+      - {x: 0.26741248, y: 0.4160129}
+      - {x: -0.01062513, y: 0.4092025}
+      - {x: -0.3075044, y: 0.41842425}
+      - {x: -0.48415986, y: 0.39985093}
+      - {x: -0.41355342, y: 0.21869247}
+      - {x: -0.0006029159, y: -0.4109993}
+      - {x: 0.01546739, y: -0.40356705}
+      - {x: 0.38754055, y: 0.17409892}
+      - {x: 0.48415983, y: 0.38127026}

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6871411926117917766}
   - component: {fileID: 8849148341203328895}
+  - component: {fileID: 872945535295591148}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -84,3 +85,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &872945535295591148
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5572301497143382684}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.058139052, y: -0.33720827}
+  m_Size: {x: 3.5323083, y: 5.8811393}
+  m_Direction: 0

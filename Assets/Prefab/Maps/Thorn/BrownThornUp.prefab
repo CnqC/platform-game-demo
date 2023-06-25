@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7311650933331071211}
   - component: {fileID: 2381154438344272371}
+  - component: {fileID: -8414805578014278272}
   m_Layer: 0
   m_Name: BrownThornUp
   m_TagString: Untagged
@@ -84,3 +85,35 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &-8414805578014278272
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2583537497801058295}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.0277778, y: 0.8888889}
+    newSize: {x: 1.0277778, y: 0.8888889}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.0007432522, y: 0.4147154}
+      - {x: -0.4915921, y: 0.39985088}
+      - {x: -0.40240502, y: 0.19267958}
+      - {x: -0.04519642, y: -0.38498637}
+      - {x: 0.008035131, y: -0.43329605}
+      - {x: 0.40240502, y: 0.20382796}
+      - {x: 0.49530822, y: 0.40728316}

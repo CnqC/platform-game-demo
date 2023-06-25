@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6624636082968769564}
   - component: {fileID: 4062784789186511300}
+  - component: {fileID: -6561161424954989998}
   m_Layer: 0
   m_Name: GreenThornUp
   m_TagString: Untagged
@@ -84,3 +85,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &-6561161424954989998
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019841931790143776}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.0277778, y: 0.8888889}
+    newSize: {x: 1.0277778, y: 0.8888889}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.48787606, y: 0.39241862}
+      - {x: -0.4098373, y: 0.21869248}
+      - {x: -0.0080351755, y: -0.4258638}
+      - {x: 0.00060287863, y: -0.4147154}
+      - {x: 0.4098373, y: 0.21497634}
+      - {x: 0.44769377, y: 0.28274706}
+      - {x: 0.48017782, y: 0.3448405}
+      - {x: 0.48415983, y: 0.40356702}
