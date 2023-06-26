@@ -1,5 +1,6 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using CnqC.PlatformGame;
 
 [CustomPropertyDrawer(typeof(LayerListAttribute), true)]
 public class LayerListDrawer : PropertyDrawer

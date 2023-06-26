@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using CnqC.PlatformGame;
 
 public static class FSM_MethodGen
 {

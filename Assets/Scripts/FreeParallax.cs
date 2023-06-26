@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
+using CnqC.PlatformGame;
 
 public delegate void FreeParallaxElementRepositionLogicFunction(FreeParallax p, FreeParallaxElement element, float amount, GameObject obj, Renderer r);
 

@@ -1,13 +1,14 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using CnqC.PlatformGame;
 
 public static class Helper
 {
     #region Animation
-    public static void PlayAnim(Animator anim, string stateName, int layerIndex = 0)
+    public static void PlayAnim(Animator anim, string stateName, int layerIndex = 0) // chạy 1 animation thuộc 1 trạng thái nào đó trong animator
     {
         if (IsAnimCanPlayState(anim, stateName, layerIndex))
         {
@@ -15,7 +16,8 @@ public static class Helper
         }
     }
 
-    public static bool IsAnimStateActive(Animator animator, string stateName, int layerIndex = 0)
+    public static bool IsAnimStateActive(Animator animator, string stateName, int layerIndex = 0) // ktra là trạng thái của ta đã kích hoạt chưa
+
     {
         if (animator)
             return animator.GetCurrentAnimatorStateInfo(layerIndex).IsName(stateName);
@@ -26,8 +28,8 @@ public static class Helper
     public static bool IsAnimCanPlayState(Animator animator, string stateName, int layerIndex = 0)
     {
         if (animator)
-            return !IsAnimStateActive(animator, stateName, layerIndex)
-            && animator.HasState(layerIndex, Animator.StringToHash(stateName));
+            return !IsAnimStateActive(animator, stateName, layerIndex) // state chưa được chạy
+            && animator.HasState(layerIndex, Animator.StringToHash(stateName)); // state này có tồn tại trong animator này không
 
         return false;
     }
