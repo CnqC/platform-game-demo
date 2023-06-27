@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Tarodev {
+namespace CnqC.PlatformGame {
     public class AutoSaveConfig : ScriptableObject {
         [Tooltip("Enable auto save functionality")]
         public bool Enabled;

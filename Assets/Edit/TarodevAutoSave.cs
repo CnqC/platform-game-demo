@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
-namespace Tarodev {
+namespace CnqC.PlatformGame {
     /// <summary>
     /// Unity has probably discussed an auto-save feature countless times over the years
     /// and decided not to implement... so take that information as you'd like. I personally
