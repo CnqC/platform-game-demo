@@ -6,6 +6,7 @@ using CnqC.PlatformGame;
 public class GamePadController : SingleTon<GamePadController>
 {
     public float jumpHoldingTime; // thời gian mà ng chơi ấn nút nhảy
+
     private bool m_canMoveLeft;
     private bool m_canMoveRight;
     private bool m_canMoveUp;
@@ -17,7 +18,7 @@ public class GamePadController : SingleTon<GamePadController>
     private bool m_canFire;
     private bool m_canAttack;
 
-    private bool m_canCheckJumpHolding; // có thể check là ng chơi giữ nút nhảy l
+    private bool m_canCheckJumpHolding; // có thể check là ng chơi giữ nút nhảy k
     private float m_curHoldingTime; // thời gian ng chơi giữ nút nhảy
 
     public bool CanMoveLeft { get => m_canMoveLeft; set => m_canMoveLeft = value; }
@@ -74,7 +75,9 @@ public class GamePadController : SingleTon<GamePadController>
                 m_curHoldingTime += Time.deltaTime;
                 if(m_curHoldingTime > jumpHoldingTime) // thời gian mà ng chơi giữ nút nhảy > thời gian giới hạn cho phép giữ nút nhảy
                 {
-                    m_isJumpHolding = Input.GetKey(KeyCode.Space);
+                    m_isJumpHolding = Input.GetKey(KeyCode.Space); //getkey : giữ, getkeydown: 1 lần duy nhất
+
+                    // khi jump thì biến curHoldingTime =0 -> sẽ cộng += Time.delta chơi tới khi nào curholdingTime > jumpholdingtime ( public) --> thì mới dc giữ tiếp nút nhảy 
                 }
             }
         }
