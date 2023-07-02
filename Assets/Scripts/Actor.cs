@@ -20,7 +20,7 @@ public class Actor : MonoBehaviour
 
     [Header("Reference: ")]
     [SerializeField] // dùng để hiển thị private hay protected ra ngoài inspector
-    private Animator m_anim;
+    protected Animator m_anim;
     protected Rigidbody2D m_rb;
 
     [Header("Vfx: ")]
@@ -49,8 +49,8 @@ public class Actor : MonoBehaviour
         if(m_rb)
             m_startingGravity = m_rb.gravityScale; // lấy ra cái gravity ban đầu
 
+        if (stat == null) return;
         m_curHp = stat.hp;
-
         m_curSpeed = stat.moveSpeed;
     }
 
