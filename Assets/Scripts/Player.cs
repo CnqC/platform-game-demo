@@ -7,7 +7,103 @@ using MonsterLove.StateMachine;// tạo ra hệ thống thay đổi trạng thá
 
 public class Player : Actor
 {
+
     private StateMachine<PlayerAnimState> m_fsm;
+    
+    [Header("Smooth Jumping Setting: ")]
+    [Range(0f, 5f)]
+    public float jumpingFallingMultipiler = 2.5f;
+    [Range(0f, 5f)]
+    public float lowJumpingMultipiler = 2.5f;
+
+    [Header("References: ")]
+    public SpriteRenderer sp;
+    public ObstacleChecker obstacleChker;
+    public CapsuleCollider2D defaultCol;
+    public CapsuleCollider2D flyingCol;
+    public CapsuleCollider2D inWaterCol;
+
+    private PlayerStat m_curStat;      // tham chieu tới scriptable Object để lưu trữ các thông số của player
+    private PlayerAnimState m_prevState; // dùng để lưu lại tráng thái đằng trước đằng thái hiện tại
+    private float m_waterFallingTime = 1f;// có 1 khoảng tgian để player ở dưới nước
+    private float m_attackTime; // thời gian trễ khi tấm công
+    private bool m_isAttacked; // đã tấn công chưa
+
+
+    private bool IsDead
+    {
+        get => m_fsm.State == PlayerAnimState.Dead || m_prevState == PlayerAnimState.Dead;  
+        // trạng thái hiện của hệ thống thay đổi trạng thái == trạng thái dead || trạng thái trước trạng thái hiện tại == trạng thái dead   
+    }
+
+    private bool IsJumping
+    {
+        get => m_fsm.State == PlayerAnimState.Jump || m_fsm.State == PlayerAnimState.OnAir ||
+            m_fsm.State == PlayerAnimState.Land;
+    }
+    private bool IsFlying
+    {
+        get => m_fsm.State == PlayerAnimState.OnAir || m_fsm.State == PlayerAnimState.Fly ||
+            m_fsm.State == PlayerAnimState.FlyOnAir; // chứng tỏ là player đang bay
+
+    }
+
+    private bool IsAttacking
+    {
+       get => m_fsm.State == PlayerAnimState.HammerAttack || m_fsm.State == PlayerAnimState.FireBullet;  
+    }
+
+    private void ActionHandle()
+    {
+        // xử lý action của player
+    }
+
+    protected override void Dead()
+    {
+        if (IsDead) return; // chết = return
+
+        ChangeState(PlayerAnimState.Dead); 
+    }
+
+    public void ChangeState(PlayerAnimState state)
+    {
+        // chuyển đổi trạng thái
+        m_prevState = m_fsm.State; // state hiện tại = preVstae
+        m_fsm.ChangeState(state); // chuyển state mới
+    }
+
+    // xử lý chuyển sang trạng thái khi mà animation kết thúc
+    private IEnumerator ChangeStateDelayCO(PlayerAnimState newState,float timeExtra=0)
+    {
+        // lấy ra animation clip đang đính vào
+        var animClip = Helper.GetClip(m_anim, m_fsm.State.ToString());
+
+        if(animClip != null)
+        {
+            yield return new WaitForSeconds(animClip.length + timeExtra);// khoảng thời gian của clip animation;
+            ChangeState(newState);
+        }
+        yield return null;
+    }
+
+    private void ChangeStateDelay(PlayerAnimState newState, float timeExtra = 0) // phương thức kích hoạt coroutine chuyển state trong bao nhiêu lâu
+    {
+        StartCoroutine(ChangeStateDelayCO(newState,timeExtra));
+    }
+
+    private void ActiveCol(PlayerCollider collider) // kích hoạt col của player
+    {
+        if (defaultCol)
+            defaultCol.enabled = collider == PlayerCollider.Default;
+        // nếu như mà giá trị truyền vào của Phương thức = với biến Default trong enum PlayerCollider thì sẽ bật 
+
+        if (flyingCol)
+            flyingCol.enabled = collider == PlayerCollider.Flying;
+
+        if (inWaterCol)
+            inWaterCol.enabled = collider == PlayerCollider.InWater;
+    }
+
 
     protected override void Awake()
     {
