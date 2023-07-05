@@ -60,7 +60,7 @@ public class GamePadController : SingleTon<GamePadController>
 
            
             m_canJump = Input.GetKeyDown(KeyCode.Space);
-            m_canFly = Input.GetKeyDown(KeyCode.F);
+            m_canFly = Input.GetKey(KeyCode.F);
             m_canFire = Input.GetKeyDown(KeyCode.C);
             m_canAttack = Input.GetKeyDown(KeyCode.V);
 

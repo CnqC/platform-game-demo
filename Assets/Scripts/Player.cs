@@ -190,6 +190,12 @@ public class Player : Actor
         {
             ChangeState(PlayerAnimState.Idle);
         }
+        if (!obstacleChker.IsOnGround)
+        {
+            ChangeState(PlayerAnimState.OnAir);
+        }
+
+
         HozMoveChecking();
         Helper.PlayAnim(m_anim, PlayerAnimState.Walk.ToString());
     }
@@ -226,7 +232,12 @@ public class Player : Actor
             // chuyển sang land
             ChangeState(PlayerAnimState.Land);
         }
-        
+
+        if (GamePadController.Ins.CanFly) // ng chơi bấm nút fly
+        {
+            ChangeState(PlayerAnimState.Fly);
+        }
+
         Helper.PlayAnim(m_anim, PlayerAnimState.OnAir.ToString());
     }
     private void OnAir_Exit() { }
@@ -254,18 +265,38 @@ public class Player : Actor
         Helper.PlayAnim(m_anim, PlayerAnimState.FireBullet.ToString());
     }
     private void FireBullet_Exit() { }
-    private void Fly_Enter() { }
+    private void Fly_Enter() {
+        ActiveCol(PlayerCollider.Default);
+        ChangeStateDelay(PlayerAnimState.FlyOnAir);// sau 1 thời gian kết thúc chuyển thành flyonAir
+    }
     private void Fly_Update()
     {
+        HozMoveChecking();
+        m_rb.velocity = new Vector2(m_rb.velocity.x, -m_curStat.flyingSpeed); // cho 1 tốc độ âm để di chuyển xuống
         Helper.PlayAnim(m_anim, PlayerAnimState.Fly.ToString());
     }
     private void Fly_Exit() { }
-    private void FlyOnAir_Enter() { }
+    private void FlyOnAir_Enter() {
+        ActiveCol(PlayerCollider.Default);
+    }
     private void FlyOnAir_Update()
     {
+        HozMoveChecking();
+        m_rb.velocity = new Vector2(m_rb.velocity.x, -m_curStat.flyingSpeed); // y như Fly
+        if (obstacleChker.IsOnGround)
+        {
+            ChangeState(PlayerAnimState.Land);
+        }
+
+        if (!GamePadController.Ins.CanFly) // nếu mà đang bay mà ng chơi k ấn giữ nữa --> chuyển sang Onair
+        {
+            ChangeState(PlayerAnimState.OnAir);
+        }
+
         Helper.PlayAnim(m_anim, PlayerAnimState.FlyOnAir.ToString());
     }
-    private void FlyOnAir_Exit() { }
+    private void FlyOnAir_Exit() {
+    }
     private void SwimOnDeep_Enter() { }
     private void SwimOnDeep_Update()
     {

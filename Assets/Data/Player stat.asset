@@ -18,8 +18,8 @@ MonoBehaviour:
   knockBackTime: 0
   knockBackForce: 0
   invincibleTime: 0
-  jumpForce: 3
-  flyingSpeed: 0
+  jumpForce: 11
+  flyingSpeed: 1.5
   ladderSpeed: 0
   swimSpeed: 0
   attackRate: 0
