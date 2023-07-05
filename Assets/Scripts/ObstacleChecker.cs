@@ -36,10 +36,21 @@ public class ObstacleChecker : MonoBehaviour
 
         m_isOnDeepWater = waterHit;
 
-        if (IsOnDeepWater)
-            Debug.Log("Dang O duoi nuoc");
-        else
-            Debug.Log("Dang o tren mat nuoc");
+        if (IsOnGround)
+        {
+            Debug.Log("dang o tren mat dat");
+            Debug.Log(IsOnGround);
+        }
+        else { 
+            Debug.Log("Dang tren khong");
+            Debug.Log(IsOnGround);
+        }
+
+
+        //if (IsOnDeepWater)
+        //    Debug.Log("Dang O duoi nuoc");
+        //else
+        //    Debug.Log("Dang o tren mat nuoc");
         //Debug.Log($"Ground: {m_isOnGround}_ Water: {m_isOnWater} _ Ladder: {m_isOnLadder}");
 
 

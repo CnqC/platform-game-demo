@@ -118,12 +118,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f593b322b2dacf547a1fa8669a682d5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stat: {fileID: 0}
-  normalLayer: 0
-  invincibleLayer: 0
-  deadLayer: 0
-  m_anim: {fileID: 6528870380115275372}
+  stat: {fileID: 11400000, guid: 19145081be4281b468dd245b560c8c35, type: 2}
+  normalLayer: 8
+  invincibleLayer: 9
+  deadLayer: 11
+  m_anim: {fileID: 0}
   deadVfx: {fileID: 0}
+  jumpingFallingMultipiler: 2.5
+  lowJumpingMultipiler: 2.5
+  sp: {fileID: 0}
+  obstacleChker: {fileID: 0}
+  defaultCol: {fileID: 385354792}
+  flyingCol: {fileID: 385354794}
+  inWaterCol: {fileID: 385354793}
 --- !u!1 &6528870380115275363
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,7 +141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6528870380115275362}
   - component: {fileID: 6528870380115275373}
-  - component: {fileID: 6528870380115275372}
+  - component: {fileID: 7356213653868612349}
   m_Layer: 8
   m_Name: Graphic
   m_TagString: Untagged
@@ -210,7 +217,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &6528870380115275372
+--- !u!95 &7356213653868612349
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -223,7 +230,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 334426a89f0cddf4d83c22a558ac2462, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 

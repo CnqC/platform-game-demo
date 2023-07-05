@@ -1,45 +1,45 @@
-void SayHello_Enter() { } 
-void SayHello_Update() { } 
-void SayHello_Exit() { } 
-void Walk_Enter() { } 
-void Walk_Update() { } 
-void Walk_Exit() { } 
-void Jump_Enter() { } 
-void Jump_Update() { } 
-void Jump_Exit() { } 
-void OnAir_Enter() { } 
-void OnAir_Update() { } 
-void OnAir_Exit() { } 
-void Land_Enter() { } 
-void Land_Update() { } 
-void Land_Exit() { } 
-void Swim_Enter() { } 
-void Swim_Update() { } 
-void Swim_Exit() { } 
-void FireBullet_Enter() { } 
-void FireBullet_Update() { } 
-void FireBullet_Exit() { } 
-void Fly_Enter() { } 
-void Fly_Update() { } 
-void Fly_Exit() { } 
-void FlyOnAir_Enter() { } 
-void FlyOnAir_Update() { } 
-void FlyOnAir_Exit() { } 
-void SwimOnDeep_Enter() { } 
-void SwimOnDeep_Update() { } 
-void SwimOnDeep_Exit() { } 
-void OnLadder_Enter() { } 
-void OnLadder_Update() { } 
-void OnLadder_Exit() { } 
-void Dead_Enter() { } 
-void Dead_Update() { } 
-void Dead_Exit() { } 
-void Idle_Enter() { } 
-void Idle_Update() { } 
-void Idle_Exit() { } 
-void LadderIdle_Enter() { } 
-void LadderIdle_Update() { } 
-void LadderIdle_Exit() { } 
-void HammerAttack_Enter() { } 
-void HammerAttack_Update() { } 
-void HammerAttack_Exit() { } 
+private void SayHello_Enter() { } 
+private void SayHello_Update() { } 
+private void SayHello_Exit() { } 
+private void Walk_Enter() { } 
+private void Walk_Update() { } 
+private void Walk_Exit() { } 
+private void Jump_Enter() { } 
+private void Jump_Update() { } 
+private void Jump_Exit() { } 
+private void OnAir_Enter() { } 
+private void OnAir_Update() { } 
+private void OnAir_Exit() { } 
+private void Land_Enter() { } 
+private void Land_Update() { } 
+private void Land_Exit() { } 
+private void Swim_Enter() { } 
+private void Swim_Update() { } 
+private void Swim_Exit() { } 
+private void FireBullet_Enter() { } 
+private void FireBullet_Update() { } 
+private void FireBullet_Exit() { } 
+private void Fly_Enter() { } 
+private void Fly_Update() { } 
+private void Fly_Exit() { } 
+private void FlyOnAir_Enter() { } 
+private void FlyOnAir_Update() { } 
+private void FlyOnAir_Exit() { } 
+private void SwimOnDeep_Enter() { } 
+private void SwimOnDeep_Update() { } 
+private void SwimOnDeep_Exit() { } 
+private void OnLadder_Enter() { } 
+private void OnLadder_Update() { } 
+private void OnLadder_Exit() { } 
+private void Dead_Enter() { } 
+private void Dead_Update() { } 
+private void Dead_Exit() { } 
+private void Idle_Enter() { } 
+private void Idle_Update() { } 
+private void Idle_Exit() { } 
+private void LadderIdle_Enter() { } 
+private void LadderIdle_Update() { } 
+private void LadderIdle_Exit() { } 
+private void HammerAttack_Enter() { } 
+private void HammerAttack_Update() { } 
+private void HammerAttack_Exit() { } 

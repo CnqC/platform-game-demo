@@ -53,11 +53,12 @@ public class GamePadController : SingleTon<GamePadController>
             float hozCheck = Input.GetAxisRaw("Horizontal");
             float vertCheck = Input.GetAxisRaw("Vertical");
             m_canMoveLeft = hozCheck < 0 ? true : false;
-            m_canMoveRight = vertCheck > 0 ? true : false;
+            m_canMoveRight = hozCheck > 0 ? true : false;
 
             m_canMoveUp = vertCheck > 0 ? true : false;
             m_canMoveDown = vertCheck < 0 ? true : false; // ấn nút xuống
 
+           
             m_canJump = Input.GetKeyDown(KeyCode.Space);
             m_canFly = Input.GetKeyDown(KeyCode.F);
             m_canFire = Input.GetKeyDown(KeyCode.C);

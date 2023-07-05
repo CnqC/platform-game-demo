@@ -53,6 +53,23 @@ public class Player : Actor
        get => m_fsm.State == PlayerAnimState.HammerAttack || m_fsm.State == PlayerAnimState.FireBullet;  
     }
 
+    protected override void Awake()
+    {
+        base.Awake();
+
+        
+        m_fsm = StateMachine<PlayerAnimState>.Initialize(this);
+        m_fsm.ChangeState(PlayerAnimState.Idle);
+    }
+
+    protected override void Init()
+    {
+        base.Init();
+        if(stat != null) // nếu mà scriptable Ojb của player != null
+        {
+            m_curStat = (PlayerStat)stat;
+        }
+    }
     private void ActionHandle()
     {
         // xử lý action của player
@@ -63,10 +80,57 @@ public class Player : Actor
         if (IsDead) return; // chết = return
 
         ChangeState(PlayerAnimState.Dead); 
+        
+    }
+
+    private void Move(Direction dir)
+    {
+        if (m_isKnockBack) return;
+
+        m_rb.isKinematic = false; // trả về dạng dymamic
+
+        if(dir == Direction.left || dir == Direction.Right)
+        {
+            Flip(dir); // lật scale của player dứng hướng di chuyển
+
+            m_hozDir = dir == Direction.left ? -1 : 1; // nếu di chuyển sang trái thì biến m_hordir = -1 còn không thì = 1
+
+            m_rb.velocity = new Vector2(m_hozDir * CurSpeed, m_rb.velocity.y);
+        } 
+        else if (dir == Direction.Up || dir == Direction.Down)
+        {
+            m_vertDir = dir == Direction.Down ? -1 : 1;
+
+            m_rb.velocity = new Vector2(m_rb.velocity.x, m_vertDir * CurSpeed);
+        }
+    }
+
+    private void Jump()
+    {
+        GamePadController.Ins.CanJump = false; // tránh bấm nút jump nhiều lần, chỉ 1 lần
+
+      
+        m_rb.velocity = new Vector2(m_rb.velocity.x,0f); // reset
+        m_rb.isKinematic = false;// trả lại dạng dymamic
+        m_rb.gravityScale = m_startingGravity;// lực hút trái đất ban đầu
+        m_rb.velocity = new Vector2(m_rb.velocity.x, m_curStat.jumpForce);// lay ra gia tri trong ScriptableOjbect
+    }
+
+    private void HozMoveChecking()
+    {
+        if (GamePadController.Ins.CanMoveLeft)
+        {
+            Move(Direction.left);
+        }
+
+        if (GamePadController.Ins.CanMoveRight)
+        {
+            Move(Direction.Right);
+        }
     }
 
     public void ChangeState(PlayerAnimState state)
-    {
+    {       
         // chuyển đổi trạng thái
         m_prevState = m_fsm.State; // state hiện tại = preVstae
         m_fsm.ChangeState(state); // chuyển state mới
@@ -104,102 +168,159 @@ public class Player : Actor
             inWaterCol.enabled = collider == PlayerCollider.InWater;
     }
 
-
-    protected override void Awake()
-    {
-        base.Awake();
-        m_fsm = StateMachine<PlayerAnimState>.Initialize(this);
-        m_fsm.ChangeState(PlayerAnimState.Swim);
-
-        //FSM_MethodGen.Gen<PlayerAnimState>();
-    }
-
     #region FSM
-    void SayHello_Enter() { }
+    private void SayHello_Enter() { }
     private void SayHello_Update()
     {
         Helper.PlayAnim(m_anim, PlayerAnimState.SayHello.ToString());
     }
-    void SayHello_Exit() { }
-    void Walk_Enter() { }
-    private void Walk_Update() {
+    private void SayHello_Exit() { }
+    private void Walk_Enter() {
+        ActiveCol(PlayerCollider.Default);
+        m_curSpeed = m_curStat.moveSpeed;
+    }
+    private void Walk_Update()  
+    {
+        if (GamePadController.Ins.CanJump) // khi đang chạy ng chơi nhảy thì sẽ => chuyển sang state nhảy 
+        {
+            Jump();
+            ChangeState(PlayerAnimState.Jump);
+        }
+        if(!GamePadController.Ins.CanMoveLeft && !GamePadController.Ins.CanMoveRight) // cả 2 nút trái phải đều k bấm thì sẽ stay còn cả 2 nút bấm thay phiên sẽ walk
+        {
+            ChangeState(PlayerAnimState.Idle);
+        }
+        HozMoveChecking();
         Helper.PlayAnim(m_anim, PlayerAnimState.Walk.ToString());
     }
-    void Walk_Exit() { }
-    void Jump_Enter() { }
+    private void Walk_Exit() { }
+    private void Jump_Enter() 
+    {
+        ActiveCol(PlayerCollider.Default); // bật collider default
+    }
     private void Jump_Update()
     {
+        m_rb.isKinematic = false; // trả lại bình thường
+
+       
+        if (m_rb.velocity.y < 0  && !obstacleChker.IsOnGround ) // khi mà cái vận tốc của y <0( tức là đang rơi, và k chạm đất)   
+        {
+            ChangeState(PlayerAnimState.OnAir);
+        }
+
+        HozMoveChecking(); // đang jump thì vẫn đi sang trái sang phải vận được
+
         Helper.PlayAnim(m_anim, PlayerAnimState.Jump.ToString());
     }
-    void Jump_Exit() { }
-    void OnAir_Enter() { }
+    private void Jump_Exit() { }
+    private void OnAir_Enter() 
+    {
+        ActiveCol(PlayerCollider.Default);
+    }
     private void OnAir_Update()
     {
+        m_rb.gravityScale = m_startingGravity; // trả lại cái gravity ban đầu
+
+        if (obstacleChker.IsOnGround ) // nếu chạm đất
+        {
+            // chuyển sang land
+            ChangeState(PlayerAnimState.Land);
+        }
+        
         Helper.PlayAnim(m_anim, PlayerAnimState.OnAir.ToString());
     }
-    void OnAir_Exit() { }
-    void Land_Enter() { }
+    private void OnAir_Exit() { }
+    private void Land_Enter() 
+    {
+
+        ChangeStateDelay(PlayerAnimState.Idle); // khi mà chạm đất thì sẽ đợi 1 thời gian nhỏ thì chuyển sang trạng thái idle
+        ActiveCol(PlayerCollider.Default);
+    }
     private void Land_Update()
     {
+        m_rb.velocity = Vector2.zero;
         Helper.PlayAnim(m_anim, PlayerAnimState.Land.ToString());
     }
-    void Land_Exit() { }
-    void Swim_Enter() { }
+    private void Land_Exit() { }
+    private void Swim_Enter() { }
     private void Swim_Update()
     {
         Helper.PlayAnim(m_anim, PlayerAnimState.Swim.ToString());
     }
-    void Swim_Exit() { }
-    void FireBullet_Enter() { }
+    private void Swim_Exit() { }
+    private void FireBullet_Enter() { }
     private void FireBullet_Update()
     {
         Helper.PlayAnim(m_anim, PlayerAnimState.FireBullet.ToString());
     }
-    void FireBullet_Exit() { }
-    void Fly_Enter() { }
+    private void FireBullet_Exit() { }
+    private void Fly_Enter() { }
     private void Fly_Update()
     {
         Helper.PlayAnim(m_anim, PlayerAnimState.Fly.ToString());
     }
-    void Fly_Exit() { }
-    void FlyOnAir_Enter() { }
+    private void Fly_Exit() { }
+    private void FlyOnAir_Enter() { }
     private void FlyOnAir_Update()
     {
         Helper.PlayAnim(m_anim, PlayerAnimState.FlyOnAir.ToString());
     }
-    void FlyOnAir_Exit() { }
-    void SwimOnDeep_Enter() { }
+    private void FlyOnAir_Exit() { }
+    private void SwimOnDeep_Enter() { }
     private void SwimOnDeep_Update()
     {
         Helper.PlayAnim(m_anim, PlayerAnimState.SwimOnDeep.ToString());
     }
-    void SwimOnDeep_Exit() { }
-    void OnLadder_Enter() { }
+    private void SwimOnDeep_Exit() { }
+    private void OnLadder_Enter() { }
     private void OnLadder_Update() {
         Helper.PlayAnim(m_anim, PlayerAnimState.OnLadder.ToString());
     }
-    void OnLadder_Exit() { }
-    void Dead_Enter() { }
+    private void OnLadder_Exit() { }
+    private void Dead_Enter() { }
     private void Dead_Update() {
+       
+
         Helper.PlayAnim(m_anim, PlayerAnimState.Dead.ToString());
     }
-    void Dead_Exit() { }
-    void Idle_Enter() { }
-    private void Idle_Update() {
-        Helper.PlayAnim(m_anim, PlayerAnimState.Idle.ToString());
+    private void Dead_Exit() { }
+    private void Idle_Enter() 
+    {
+        ActiveCol(PlayerCollider.Default);
     }
-    void Idle_Exit() { }
-    void LadderIdle_Enter() { }
+    private void Idle_Update() {
+
+        if (GamePadController.Ins.CanJump) // nếu mà player ấn jump  
+        {
+            Jump();
+            ChangeState(PlayerAnimState.Jump);
+        }
+
+        if (GamePadController.Ins.CanMoveLeft || GamePadController.Ins.CanMoveRight)
+        {
+            ChangeState(PlayerAnimState.Walk);
+        }
+        Helper.PlayAnim(m_anim, PlayerAnimState.Idle.ToString());
+        
+    }
+    private void Idle_Exit() { }
+    private void LadderIdle_Enter() { }
     private void LadderIdle_Update() {
         Helper.PlayAnim(m_anim, PlayerAnimState.LadderIdle.ToString());
     }
-    void LadderIdle_Exit() { }
-    void HammerAttack_Enter() { }
+    private void LadderIdle_Exit() { }
+    private void HammerAttack_Enter() { }
     private void HammerAttack_Update() {
         Helper.PlayAnim(m_anim, PlayerAnimState.HammerAttack.ToString());
     }
-    void HammerAttack_Exit() { }
+    private void HammerAttack_Exit() { }
 
 
     #endregion
+
+
+    private void Update()
+    {
+        Debug.Log(m_rb.velocity.y);
+    }
 }
