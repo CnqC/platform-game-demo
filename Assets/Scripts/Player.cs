@@ -133,6 +133,15 @@ public class Player : Actor
         m_rb.velocity = new Vector2(m_rb.velocity.x, m_curStat.jumpForce);// lay ra gia tri trong ScriptableOjbect
     }
 
+    private void JumpChecking()
+    {
+        if (GamePadController.Ins.CanJump)
+        {
+            Jump();
+            ChangeState(PlayerAnimState.Jump);
+        }
+    }
+
     private void HozMoveChecking()
     {
         if (GamePadController.Ins.CanMoveLeft)
@@ -157,6 +166,7 @@ public class Player : Actor
         {
             Move(Direction.Down);
         }
+        GamePadController.Ins.CanFly = false; // vô hiue hóa nút bay
     }
 
     private void WaterCheck()
@@ -238,11 +248,7 @@ public class Player : Actor
     }
     private void Walk_Update()  
     {
-        if (GamePadController.Ins.CanJump) // khi đang chạy ng chơi nhảy thì sẽ => chuyển sang state nhảy 
-        {
-            Jump();
-            ChangeState(PlayerAnimState.Jump);
-        }
+        JumpChecking();
         if(!GamePadController.Ins.CanMoveLeft && !GamePadController.Ins.CanMoveRight) // cả 2 nút trái phải đều k bấm thì sẽ stay còn cả 2 nút bấm thay phiên sẽ walk
         {
             ChangeState(PlayerAnimState.Idle);
@@ -321,12 +327,7 @@ public class Player : Actor
     }
     private void Swim_Update() // trên mặt nước
     {
-        if (GamePadController.Ins.CanJump)
-        {
-            Jump();
-            ChangeState(PlayerAnimState.Jump);
-        }
-        GamePadController.Ins.CanFly = false;// chạm nước thì k cho player bay nữa
+        JumpChecking();
         WaterCheck();
 
         HozMoveChecking();
@@ -351,6 +352,13 @@ public class Player : Actor
     {
         HozMoveChecking();
         m_rb.velocity = new Vector2(m_rb.velocity.x, -m_curStat.flyingSpeed); // cho 1 tốc độ âm để di chuyển xuống
+
+        if (obstacleChker.IsOnWater)
+        {
+            m_rb.velocity = new Vector2(0f, m_rb.velocity.y);
+            WaterCheck();
+        }
+
         Helper.PlayAnim(m_anim, PlayerAnimState.Fly.ToString());
     }
     private void Fly_Exit() { }
@@ -371,6 +379,12 @@ public class Player : Actor
             ChangeState(PlayerAnimState.OnAir);
         }
 
+        if (obstacleChker.IsOnWater)
+        {
+            m_rb.velocity = new Vector2(0f, m_rb.velocity.y);
+            WaterCheck();
+        }
+
         Helper.PlayAnim(m_anim, PlayerAnimState.FlyOnAir.ToString());
     }
     private void FlyOnAir_Exit() {
@@ -382,7 +396,7 @@ public class Player : Actor
     }
     private void SwimOnDeep_Update()
     {
-        GamePadController.Ins.CanFly = false; // k bay
+        
         WaterCheck();
         HozMoveChecking();
         VertMoveCheck();
@@ -411,7 +425,7 @@ public class Player : Actor
             // nếu k còn trên thang
             ChangeState(PlayerAnimState.OnAir);
         }
-        GamePadController.Ins.CanFly = false; // vô hiue hóa nút bay
+       
         m_rb.gravityScale = 0f; // xét lại gravity trên thang
 
         Helper.PlayAnim(m_anim, PlayerAnimState.OnLadder.ToString());
@@ -430,11 +444,7 @@ public class Player : Actor
     }
     private void Idle_Update() {
 
-        if (GamePadController.Ins.CanJump) // nếu mà player ấn jump  
-        {
-            Jump();
-            ChangeState(PlayerAnimState.Jump);
-        }
+        JumpChecking();
 
         if (GamePadController.Ins.CanMoveLeft || GamePadController.Ins.CanMoveRight)
         {
