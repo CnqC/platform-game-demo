@@ -73,6 +73,23 @@ public class Player : Actor
     private void ActionHandle()
     {
         // xử lý action của player
+
+        if (IsAttacking || m_isKnockBack) return; //khi hero đang đánh hay bị đánh thì k thể leo thang hay làm hành động khác được
+
+        if (GamePadController.Ins.IsStatic)
+        {
+            // khi nhả hết nút ra 
+            m_rb.velocity = new Vector2(0f, m_rb.velocity.y); //  nhân vật di chuyển bị trượt 1 đoạn khi k bấm nút gì hết -> stop vận tốc trục X lại
+        }
+        else
+        {
+           
+        }
+        if (obstacleChker.IsOnLadder && m_fsm.State != PlayerAnimState.LadderIdle
+          && m_fsm.State != PlayerAnimState.OnLadder) // khi player chạm vào thang thì chuyển sang dạng LadderIdle
+        {
+            ChangeState(PlayerAnimState.LadderIdle);
+        }
     }
 
     protected override void Dead()
@@ -126,6 +143,19 @@ public class Player : Actor
         if (GamePadController.Ins.CanMoveRight)
         {
             Move(Direction.Right);
+        }
+    }
+
+    private void VertMoveCheck()
+    {
+        if (IsJumping) return; // nếu đang nhảy thì k tính, di chuyển lên trên chỉ áp dụng cho leo thang
+        if (GamePadController.Ins.CanMoveUp)
+        {
+            Move(Direction.Up);
+        }
+        else if(GamePadController.Ins.CanMoveDown)
+        {
+            Move(Direction.Down);
         }
     }
 
@@ -266,7 +296,7 @@ public class Player : Actor
     }
     private void FireBullet_Exit() { }
     private void Fly_Enter() {
-        ActiveCol(PlayerCollider.Default);
+        ActiveCol(PlayerCollider.Flying);
         ChangeStateDelay(PlayerAnimState.FlyOnAir);// sau 1 thời gian kết thúc chuyển thành flyonAir
     }
     private void Fly_Update()
@@ -277,7 +307,7 @@ public class Player : Actor
     }
     private void Fly_Exit() { }
     private void FlyOnAir_Enter() {
-        ActiveCol(PlayerCollider.Default);
+        ActiveCol(PlayerCollider.Flying);
     }
     private void FlyOnAir_Update()
     {
@@ -303,8 +333,28 @@ public class Player : Actor
         Helper.PlayAnim(m_anim, PlayerAnimState.SwimOnDeep.ToString());
     }
     private void SwimOnDeep_Exit() { }
-    private void OnLadder_Enter() { }
+    private void OnLadder_Enter() {
+
+        ActiveCol(PlayerCollider.Default);
+        m_rb.velocity = Vector2.zero;
+    }
     private void OnLadder_Update() {
+
+        VertMoveCheck();  
+        HozMoveChecking();
+        if(!GamePadController.Ins.CanMoveUp && !GamePadController.Ins.CanMoveDown) // nếu mà ng chơi k bấm cả 2 nút lên và xuống
+        {
+            m_rb.velocity = new Vector2(m_rb.velocity.x, 0f); //giảm vận tốc của phương y về 0
+            ChangeState(PlayerAnimState.LadderIdle);
+        }
+        if (!obstacleChker.IsOnLadder)
+        {
+            // nếu k còn trên thang
+            ChangeState(PlayerAnimState.OnAir);
+        }
+        GamePadController.Ins.CanFly = false; // vô hiue hóa nút bay
+        m_rb.gravityScale = 0f; // xét lại gravity trên thang
+
         Helper.PlayAnim(m_anim, PlayerAnimState.OnLadder.ToString());
     }
     private void OnLadder_Exit() { }
@@ -335,8 +385,27 @@ public class Player : Actor
         
     }
     private void Idle_Exit() { }
-    private void LadderIdle_Enter() { }
+    private void LadderIdle_Enter() {
+        ActiveCol(PlayerCollider.Default);
+        m_rb.velocity = Vector2.zero; // vận tốc = 0
+        m_curSpeed = m_curStat.ladderSpeed;
+    }
     private void LadderIdle_Update() {
+
+        if (GamePadController.Ins.CanMoveUp || GamePadController.Ins.CanMoveDown)
+        {
+            ChangeState(PlayerAnimState.OnLadder); // leo thang 
+        }
+
+        if (!obstacleChker.IsOnLadder)
+        {
+            // ng chơi k còn trên ladder nữa chuyển sang OnAir
+            ChangeState(PlayerAnimState.OnAir);
+        }
+        GamePadController.Ins.CanFly = false; // trên thang nên là tắt bay
+        m_rb.gravityScale = 0; // trọng lực  =0 , 0 hút nữa
+        HozMoveChecking();
+
         Helper.PlayAnim(m_anim, PlayerAnimState.LadderIdle.ToString());
     }
     private void LadderIdle_Exit() { }
@@ -352,6 +421,10 @@ public class Player : Actor
 
     private void Update()
     {
+
+       
+        ActionHandle();
+
         Debug.Log(m_rb.velocity.y);
     }
 }
