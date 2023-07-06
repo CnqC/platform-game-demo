@@ -159,6 +159,33 @@ public class Player : Actor
         }
     }
 
+    private void WaterCheck()
+    {
+        if (obstacleChker.IsOnLadder) return; // trên thang thì k check nữa
+
+        if(obstacleChker.IsOnDeepWater) // dưới sâu
+        {
+            m_rb.gravityScale = 0f; // lục hút = 0
+            m_rb.velocity = new Vector2(m_rb.velocity.x, 0f); // đứng yên k di chuyển lên xuống ở dưới nc sâu
+            ChangeState(PlayerAnimState.SwimOnDeep);
+
+
+        } else if (obstacleChker.IsOnWater && !IsJumping) // trên mặt nước
+        {
+            m_waterFallingTime -= Time.deltaTime; // thời gian này có nghĩa là: Player xuống nước -> chìm trong 1 thời gian ngắn -> dứng yên ( k chìm xuống đáy)
+
+            if(m_waterFallingTime <= 0)
+            {
+                m_rb.gravityScale = 0f;
+                    m_rb.velocity = Vector2.zero;  // đứng yên
+            }
+
+            GamePadController.Ins.CanMoveUp = false; // không cho ng chơi bấm lên trên lúc ở sát mặt nước
+                                                     // vì sẽ hiện tượng nhảy nhảy trên mặt nước ( chuyển giữa các trạng thái)
+            ChangeState(PlayerAnimState.Swim);
+        }
+    }
+
     public void ChangeState(PlayerAnimState state)
     {       
         // chuyển đổi trạng thái
@@ -268,6 +295,11 @@ public class Player : Actor
             ChangeState(PlayerAnimState.Fly);
         }
 
+        if (obstacleChker.IsOnWater)
+        {
+            m_rb.velocity = new Vector2(0f, m_rb.velocity.y);
+            WaterCheck();
+        }
         Helper.PlayAnim(m_anim, PlayerAnimState.OnAir.ToString());
     }
     private void OnAir_Exit() { }
@@ -283,12 +315,28 @@ public class Player : Actor
         Helper.PlayAnim(m_anim, PlayerAnimState.Land.ToString());
     }
     private void Land_Exit() { }
-    private void Swim_Enter() { }
-    private void Swim_Update()
+    private void Swim_Enter() {
+        ActiveCol(PlayerCollider.InWater);
+        m_curSpeed = m_curStat.swimSpeed; // gán giá trị swimspeed cho tốc độ của nhân vật hiện tại
+    }
+    private void Swim_Update() // trên mặt nước
     {
+        if (GamePadController.Ins.CanJump)
+        {
+            Jump();
+            ChangeState(PlayerAnimState.Jump);
+        }
+        GamePadController.Ins.CanFly = false;// chạm nước thì k cho player bay nữa
+        WaterCheck();
+
+        HozMoveChecking();
+        VertMoveCheck();
+
         Helper.PlayAnim(m_anim, PlayerAnimState.Swim.ToString());
     }
-    private void Swim_Exit() { }
+    private void Swim_Exit() {
+        m_waterFallingTime = 1f; 
+    }
     private void FireBullet_Enter() { }
     private void FireBullet_Update()
     {
@@ -327,12 +375,23 @@ public class Player : Actor
     }
     private void FlyOnAir_Exit() {
     }
-    private void SwimOnDeep_Enter() { }
+    private void SwimOnDeep_Enter() {
+        ActiveCol(PlayerCollider.InWater);
+        m_curSpeed = m_curStat.swimSpeed;
+        m_rb.velocity = Vector2.zero;
+    }
     private void SwimOnDeep_Update()
     {
+        GamePadController.Ins.CanFly = false; // k bay
+        WaterCheck();
+        HozMoveChecking();
+        VertMoveCheck();
         Helper.PlayAnim(m_anim, PlayerAnimState.SwimOnDeep.ToString());
     }
-    private void SwimOnDeep_Exit() { }
+    private void SwimOnDeep_Exit() { // khi mà thoát khỏi chế độ bơi thì
+        m_rb.velocity = Vector2.zero;
+        GamePadController.Ins.CanMoveUp = false; // k cho ng chơi ấn nút lên
+    }
     private void OnLadder_Enter() {
 
         ActiveCol(PlayerCollider.Default);
@@ -425,6 +484,9 @@ public class Player : Actor
        
         ActionHandle();
 
+        Debug.Log(m_rb.velocity.x);
         Debug.Log(m_rb.velocity.y);
+      
+
     }
 }
