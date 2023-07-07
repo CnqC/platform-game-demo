@@ -99,7 +99,7 @@ public class Player : Actor
         if (!obstacleChker.IsOnWater )
         {
             AttackChecking();
-        }
+        } 
 
         ReduceActionRate(ref m_isAttacked, ref m_attackTime, m_curStat.attackRate); // delay lại tấn công của palyer
     }
@@ -547,7 +547,7 @@ public class Player : Actor
         ActionHandle();
 
 
-        Debug.Log(m_rb.velocity.y);
+       
 
 
     }

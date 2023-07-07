@@ -6,6 +6,8 @@ using CnqC.PlatformGame;
 public class GameManager : SingleTon<GameManager>
 {
     public GamePlaySetting setting;
+
+    public Player player;
     public override void Awake()
     {
         // base.Awake();  hủy khi load scene 
