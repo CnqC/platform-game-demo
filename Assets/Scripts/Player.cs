@@ -95,6 +95,13 @@ public class Player : Actor
         {
             ChangeState(PlayerAnimState.LadderIdle);
         }
+
+        if (!obstacleChker.IsOnWater )
+        {
+            AttackChecking();
+        }
+
+        ReduceActionRate(ref m_isAttacked, ref m_attackTime, m_curStat.attackRate); // delay lại tấn công của palyer
     }
 
     protected override void Dead()
@@ -214,6 +221,21 @@ public class Player : Actor
             GamePadController.Ins.CanMoveUp = false; // không cho ng chơi bấm lên trên lúc ở sát mặt nước
                                                      // vì sẽ hiện tượng nhảy nhảy trên mặt nước ( chuyển giữa các trạng thái)
             ChangeState(PlayerAnimState.Swim);
+        }
+    }
+
+    private void AttackChecking()
+    {
+        if(GamePadController.Ins.CanAttack == true)
+        {
+            if (m_isAttacked) return; // khi nào tấn công r thì return -> tránh spam
+            ChangeState(PlayerAnimState.HammerAttack);
+        } else if(GamePadController.Ins.CanFire == true)
+        {
+
+            // ktra xem còn đủ đạn hay k thì mới chuyển trạng thái
+
+            ChangeState(PlayerAnimState.FireBullet);
         }
     }
 
@@ -359,7 +381,10 @@ public class Player : Actor
     private void Swim_Exit() {
         m_waterFallingTime = 1f; 
     }
-    private void FireBullet_Enter() { }
+    private void FireBullet_Enter() 
+    {
+        ChangeStateDelay(PlayerAnimState.Idle);
+    }
     private void FireBullet_Update()
     {
         Helper.PlayAnim(m_anim, PlayerAnimState.FireBullet.ToString());
@@ -499,8 +524,14 @@ public class Player : Actor
         Helper.PlayAnim(m_anim, PlayerAnimState.LadderIdle.ToString());
     }
     private void LadderIdle_Exit() { }
-    private void HammerAttack_Enter() { }
+    private void HammerAttack_Enter() 
+    {
+        ChangeStateDelay(PlayerAnimState.Idle);
+        m_isAttacked = true; // check là đã tấn công
+    }
     private void HammerAttack_Update() {
+
+        m_rb.velocity = Vector2.zero; // stop
         Helper.PlayAnim(m_anim, PlayerAnimState.HammerAttack.ToString());
     }
     private void HammerAttack_Exit() { }

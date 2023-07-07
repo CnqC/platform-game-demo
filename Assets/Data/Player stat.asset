@@ -22,4 +22,4 @@ MonoBehaviour:
   flyingSpeed: 1.5
   ladderSpeed: 3
   swimSpeed: 2
-  attackRate: 0
+  attackRate: 0.7
