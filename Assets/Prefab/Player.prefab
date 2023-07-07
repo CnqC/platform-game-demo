@@ -122,12 +122,12 @@ MonoBehaviour:
   normalLayer: 8
   invincibleLayer: 9
   deadLayer: 11
-  m_anim: {fileID: 0}
+  m_anim: {fileID: 7356213653868612349}
   deadVfx: {fileID: 0}
-  jumpingFallingMultipiler: 2.5
-  lowJumpingMultipiler: 2.5
+  jumpingFallingMultipiler: 5
+  lowJumpingMultipiler: 5
   sp: {fileID: 0}
-  obstacleChker: {fileID: 0}
+  obstacleChker: {fileID: 2816712898661167119}
   defaultCol: {fileID: 385354792}
   flyingCol: {fileID: 385354794}
   inWaterCol: {fileID: 385354793}

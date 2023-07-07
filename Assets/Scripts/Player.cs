@@ -62,6 +62,11 @@ public class Player : Actor
         m_fsm.ChangeState(PlayerAnimState.Idle);
     }
 
+    private void FixedUpdate()
+    {
+        SmoothJump();
+    }
+
     protected override void Init()
     {
         base.Init();
@@ -131,6 +136,22 @@ public class Player : Actor
         m_rb.isKinematic = false;// trả lại dạng dymamic
         m_rb.gravityScale = m_startingGravity;// lực hút trái đất ban đầu
         m_rb.velocity = new Vector2(m_rb.velocity.x, m_curStat.jumpForce);// lay ra gia tri trong ScriptableOjbect
+    }
+
+    private void SmoothJump() // làm cho cú nhảy của player khi ấn 1 cái thì nhảy bình thương, nếu giữ thì sẽ nhảy max
+    {
+        if (obstacleChker.IsOnGround || (obstacleChker.IsOnWater && IsJumping)) return;
+
+        if(m_rb.velocity.y < 0)
+        {
+            // gravity.y =-9.81 , nên vận tốc sẽ giảm dần và khi vận tốc = 0 thì sẽ rơi
+            // nhanh hay chậm là phụ thuộc vào tham số jumpingFallingMultipiler
+            m_rb.velocity += Vector2.up * Physics2D.gravity.y * (jumpingFallingMultipiler - 1) * Time.deltaTime;
+        }
+        else if( m_rb.velocity.y >0 && !GamePadController.Ins.IsJumpHolding)
+        {
+            m_rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpingMultipiler - 1) * Time.deltaTime;
+        }
     }
 
     private void JumpChecking()
@@ -494,9 +515,9 @@ public class Player : Actor
        
         ActionHandle();
 
-        Debug.Log(m_rb.velocity.x);
+
         Debug.Log(m_rb.velocity.y);
-      
+
 
     }
 }
