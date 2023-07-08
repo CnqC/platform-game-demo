@@ -24,7 +24,7 @@ public class Actor : MonoBehaviour
     protected Rigidbody2D m_rb;
 
     [Header("Vfx: ")]
-    public GameObject deadVfx;
+    public GameObject deadVfxPb;
     protected Actor m_WhoHit; // bị đối tượng nào đánh trúng
 
     protected int m_curHp; // máu hiện tại
