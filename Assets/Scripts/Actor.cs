@@ -125,24 +125,32 @@ public class Actor : MonoBehaviour
 
     protected void Flip(Direction movedir)
     {
+
+        
         switch (movedir)
         {
             case Direction.left:
-                if(transform.localScale.x > 0) // nếu di chuyển sang trái mà scale x hiện tại > 0 ( sang phải) thì đổi scale lại thành âm
+                
+                if (transform.localScale.x > 0) // nếu di chuyển sang trái mà scale x hiện tại > 0 ( sang phải) thì đổi scale lại thành âm
                 {
                     transform.localScale = new Vector3(
-                        transform.localScale.x * -1,
+                        transform.localScale.x * (-1),
                         transform.localScale.y,
                         transform.localScale.z);
+                    m_isFacingLeft = true; // hướng mặt về trái
                 }
                 break;
+
             case Direction.Right: // nếu di chuyển sang phải mà scale đang <0 -> chỉnh lại >0.
+                
                 if (transform.localScale.x < 0)
                 {
                     transform.localScale = new Vector3(
-                        transform.localScale.x * -1,
+                        transform.localScale.x * (-1),
                         transform.localScale.y,
                         transform.localScale.z);
+
+                    m_isFacingLeft = false;
                 }
                 break;
             case Direction.Up:
@@ -150,7 +158,7 @@ public class Actor : MonoBehaviour
                 {
                     transform.localScale = new Vector3(
                         transform.localScale.x,
-                        transform.localScale.y * -1,
+                        transform.localScale.y * (-1),
                         transform.localScale.z);
                 }
                 break;
@@ -159,7 +167,7 @@ public class Actor : MonoBehaviour
                 {
                     transform.localScale = new Vector3(
                         transform.localScale.x,
-                        transform.localScale.y * -1,
+                        transform.localScale.y * (-1),
                         transform.localScale.z);
                 }
                 break;

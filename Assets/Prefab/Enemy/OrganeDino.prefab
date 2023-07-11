@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 670984389590973277}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 9.920243}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 954602250595184220}
@@ -98,7 +98,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 4252b7e8ba4b8d2468a0990dc531d2e0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -117,6 +117,9 @@ GameObject:
   - component: {fileID: 954602250595184220}
   - component: {fileID: -4624129314050651519}
   - component: {fileID: -4126679090405160724}
+  - component: {fileID: 1070558230}
+  - component: {fileID: 1070558231}
+  - component: {fileID: 1070558235}
   m_Layer: 10
   m_Name: OrganeDino
   m_TagString: Enemy
@@ -174,6 +177,60 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.08332431, y: -0.03703296}
-  m_Size: {x: 1.6295068, y: 2.2590678}
+  m_Offset: {x: 0.09643448, y: 0.011991944}
+  m_Size: {x: 1.0412052, y: 1.5400332}
   m_Direction: 0
+--- !u!114 &1070558230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881507620729337230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75e4bec38ff10df439bba9cd62b5f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat: {fileID: 11400000, guid: 37ac3190f7b3d654abbf241c78905096, type: 2}
+  normalLayer: 10
+  invincibleLayer: 9
+  deadLayer: 11
+  m_anim: {fileID: 8079806608801175130}
+  deadVfxPb: {fileID: 0}
+  movingDist: 0
+--- !u!114 &1070558231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881507620729337230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ed2aa9ed88738241b52a81bc3199ca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDir: 1
+  movingDist: 3
+  speed: 0
+  isOnlyUp: 0
+  isAuto: 0
+--- !u!114 &1070558235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881507620729337230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2430b1018adc44d4d9296d6b27cc6053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disable: 0
+  detectMethod: 0
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  detectDist: 3

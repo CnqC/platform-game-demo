@@ -14,7 +14,8 @@ public class PlayerDectect : MonoBehaviour
     private Vector2 m_dirToTarget;
     private bool m_isDetected; //xác định được Player hay k
 
-    public Player target { get => m_target;  }
+    public Player target
+    { get => m_target;  }
     public Vector2 DirToTarget { get => m_dirToTarget; }
     public bool IsDetected { get => m_isDetected;  }
 

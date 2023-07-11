@@ -17,8 +17,11 @@ public class LineMoving : MonoBehaviour
     private Vector3 m_backDir; // hướng di chuyển ngược lại
     private Vector3 m_startingPos;// vị trí đầu tiên của đối tượng
     private Rigidbody2D m_rb;
+    
+
     public Vector2 Destination { get => m_destination;  }
     public Vector3 BackDir { get => m_backDir; }
+
 
     private void Awake()
     {
@@ -37,10 +40,11 @@ public class LineMoving : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (!isAuto) return;
+        if (!isAuto) return;    
 
         Move();
         SwitchDirChecking(); // đổi hướng khi tới đích
+        
     }
     private void GetMovingDestination()
     {
@@ -68,17 +72,17 @@ public class LineMoving : MonoBehaviour
 
         // nếu mà khoảng cách ( từ điểm bắt đầu tới vị trí hiện tại) > ( từ điểm bất đầu tới đích)
         // --> đã về đích == true;
-        return dist1 > dist2 ? true : false; 
+        return dist1 > dist2; 
 
     }
 
     public void SwitchDir(Vector2 dir)
     {
-        if(moveDir == Direction.left || moveDir == Direction.Up)
+        if(moveDir == Direction.left || moveDir == Direction.Right)
         {
             moveDir = dir.x < 0 ? Direction.left : Direction.Right; 
         }
-        else if (moveDir == Direction.Up || moveDir == Direction.Down)
+        else if (moveDir == Direction.Up || moveDir == Direction.Down)  
         { 
             moveDir = dir.y < 0 ? Direction.Down : Direction.Up;
         }
@@ -90,6 +94,8 @@ public class LineMoving : MonoBehaviour
         {
             // đã tới đích // đổi hướng
             SwitchDir(m_backDir);
+
+            
 
             // lấy ra tọa độ điểm đích mới
             GetMovingDestination();
@@ -103,6 +109,7 @@ public class LineMoving : MonoBehaviour
             case Direction.left:
                 m_rb.velocity = new Vector2(-speed, m_rb.velocity.y);
                 transform.position = new Vector2(transform.position.x, m_startingPos.y);// cố định vị trí ban đầu y
+                
 
                 break;
             case Direction.Right:
@@ -112,23 +119,23 @@ public class LineMoving : MonoBehaviour
             case Direction.Up:
                 m_rb.velocity = new Vector2(m_rb.velocity.x, speed);
                 // vì ta di chuyển dọc nên sẽ cố định x
-                transform.position = new Vector2(m_rb.velocity.x, transform.position.y);
+                transform.position = new Vector2(m_startingPos.x, transform.position.y);
                 break;
             case Direction.Down:
                 if (isOnlyUp) return;
 
                 m_rb.velocity = new Vector2(m_rb.velocity.x, -speed);
                 // vì ta di chuyển dọc nên sẽ cố định x
-                transform.position = new Vector2(m_rb.velocity.x, transform.position.y);
+                transform.position = new Vector2(m_startingPos.x, transform.position.y);
                 break;
         }
     }
 
     private void OnDrawGizmos()
-    {
+    { 
         Gizmos.color = Color.cyan;
-        m_startingPos = transform.position; // vị trí ban đầu = vị trí hiện tại
-        GetMovingDestination();
+        //m_startingPos = transform.position; // vị trí ban đầu = vị trí hiện tại
+        GetMovingDestination(); // lấy tọa độ điểm đich
         Gizmos.DrawLine(transform.position, m_destination);
     }
 }
