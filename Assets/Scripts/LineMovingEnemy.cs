@@ -71,7 +71,7 @@ public class LineMovingEnemy : Enemy
         GetTargetDir(); 
         if (m_isKnockBack)
         {
-
+            KnockBackMover(m_targetDir.y);
         }
         else // k bị đẩy lùi ( hết knockback -> moving)
         {

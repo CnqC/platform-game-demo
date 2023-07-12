@@ -127,7 +127,7 @@ public class FreeMovingEnemy : Enemy
     {
         if (m_isKnockBack)
         {
-
+            KnockBackMover(0.55f);
         }
         else
         {
