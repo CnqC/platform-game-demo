@@ -57,11 +57,29 @@ public class Player : Actor
     {
         base.Awake();
 
-        
+       
         m_fsm = StateMachine<PlayerAnimState>.Initialize(this);
         m_fsm.ChangeState(PlayerAnimState.Idle);
-    }
+      
+    }   
 
+    private void Update()
+    {
+
+
+        ActionHandle();
+        if(m_isInvincible == true)
+        {
+            Debug.Log("true");
+
+        }
+        else
+        {
+            Debug.Log("Nothing");
+        }
+       
+
+    }
     private void FixedUpdate()
     {
         SmoothJump();
@@ -238,6 +256,17 @@ public class Player : Actor
             ChangeState(PlayerAnimState.FireBullet);
         }
     }
+    public override void TakeDamege(int dmg, Actor whoHit = null)
+    {
+        if (IsDead) return;
+        base.TakeDamege(dmg, whoHit);
+
+        if(m_curHp > 0 && !m_isInvincible)
+        {
+            ChangeState(PlayerAnimState.GotHit);
+        }
+
+    }
 
     public void ChangeState(PlayerAnimState state)
     {       
@@ -276,6 +305,19 @@ public class Player : Actor
 
         if (inWaterCol)
             inWaterCol.enabled = collider == PlayerCollider.InWater;
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag(GameTag.Enemy.ToString()))
+        {
+            Enemy enemy = col.gameObject.GetComponent<Enemy>(); // lấy ra đối tượng trong script enemy gán cho game oject tên "col"
+
+            if (enemy)
+            {
+                TakeDamege(enemy.stat.damage,enemy);
+            }
+        }
     }
 
     #region FSM
@@ -506,7 +548,7 @@ public class Player : Actor
         m_curSpeed = m_curStat.ladderSpeed;
     }
     private void LadderIdle_Update() {
-
+        
         if (GamePadController.Ins.CanMoveUp || GamePadController.Ins.CanMoveDown)
         {
             ChangeState(PlayerAnimState.OnLadder); // leo thang 
@@ -536,19 +578,34 @@ public class Player : Actor
     }
     private void HammerAttack_Exit() { }
 
+    private void GotHit_Enter()
+    {
 
+    }
+
+    private void GotHit_Update()
+    {
+        if (m_isKnockBack)
+        {
+            KnockBackMover(0.25f);
+            Helper.PlayAnim(m_anim, PlayerAnimState.GotHit.ToString());
+        }
+        else if (obstacleChker.IsOnWater) // dưới nước và k bị đánh thì chuyển vè trạng thái trc đó
+        {
+            ChangeState(m_prevState);
+        }
+        else // k knockback hay k dưới nước thì chuyển thành idle
+        {
+            ChangeState(PlayerAnimState.Idle);
+        }
+    }
+
+    private void GotHit_Exit()
+    {
+
+    }
     #endregion
 
 
-    private void Update()
-    {
-
-       
-        ActionHandle();
-
-
-       
-
-
-    }
+  
 }

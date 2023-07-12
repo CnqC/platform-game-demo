@@ -68,7 +68,8 @@ public enum PlayerAnimState // các trạng thái (state) ở trong phần anima
     Dead,
     Idle,
     LadderIdle,
-    HammerAttack
+    HammerAttack,
+    GotHit
 }
 
 public enum EnemyAnimState // các trạng thái của enemy

@@ -100,8 +100,9 @@ public class Enemy : Actor
 
     public override void TakeDamege(int dmg, Actor whoHit = null)
     {
+        if (IsDead) return;
         base.TakeDamege(dmg, whoHit);
-        if(m_curHp >0 && !m_isInvincible) // nếu như Enemy bị tấn công nhưng máu hiện tại vẫn còn
+        if(m_curHp > 0 && !m_isInvincible) // nếu như Enemy bị tấn công nhưng máu hiện tại vẫn còn
         {
             m_fsm.ChangeState(EnemyAnimState.GotHit);
         }

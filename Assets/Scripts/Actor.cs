@@ -67,14 +67,14 @@ public class Actor : MonoBehaviour
     {
         if (m_isInvincible || m_isKnockBack) return; // nếu mà đang trạng thái phản công hay bị giật lùi thì sẽ k nhận sát thương
 
-        if (m_curHp < 0)
+        if (m_curHp > 0)
         {
             m_WhoHit = whoHit; // truyền giá tị biến whoHit trong takeDamge cho biến m_Whohit
             m_curHp -= dmg; // giảm lượng máu = số lượng damage nhận vào
 
             if (m_curHp <= 0)
             {
-                CurHp = 0; // nếu máu mà <0 -> trả về 0
+                m_curHp = 0; // nếu máu mà <0 -> trả về 0
                 Dead(); // gọi phương thức dead
             }
             KnockBack();
@@ -83,7 +83,7 @@ public class Actor : MonoBehaviour
 
     protected virtual void KnockBack() // đẩy lùi khi nhận sát thương
     {                                              // game Object bị ẩn / không tồn tại trên scene
-        if (m_isInvincible || m_isKnockBack || gameObject.activeInHierarchy) return;
+        if (m_isInvincible || m_isKnockBack || !gameObject.activeInHierarchy) return;
 
         m_isKnockBack = true;
 
@@ -113,14 +113,30 @@ public class Actor : MonoBehaviour
 
     protected void KnockBackMover(float yRate) // xử lý đẩy lùi về sau khi nhận sát thuong
     {
-        //if(m_WhoHit == null) // nếu mà player k va chạm vào layer enemy, va chạm vào chướng ngại vật
-        //{
-        //    m_vertDir = m_vertDir == 0 ? 1 : m_vertDir; // nếu di chuyển theo hướng bằng trên dưới  == 0 -> =1 / còn k thì trả lại giá trị cũ
-        //}
-        //else // nhận sát thương từ nhân vật
-        //{
+        if(m_WhoHit == null) // nếu mà player k va chạm vào layer enemy, va chạm vào chướng ngại vật
+        {
+            m_vertDir = m_vertDir == 0 ? 1 : m_vertDir; // nếu di chuyển theo hướng bằng trên dưới  == 0 -> =1 / còn k thì trả lại giá trị cũ
+            m_rb.velocity = new Vector2(
+                m_hozDir * (-stat.knockBackForce), // khi tấn công thì sẽ bị bật lại -> nên phải âm để ngược hướng hiện tại
+                (m_vertDir * 0.55f) * stat.knockBackForce); 
+        }
+        else // nhận sát thương từ nhân vật
+        {
+           
+            // hướng = vị trí của thằng dây sát thương - vị trí thằng nhân sát thương
+            Vector2 dir = m_WhoHit.transform.position - transform.position;
+            dir.Normalize();
 
-        //}
+            if(dir.x > 0)
+            { // hướng x >0 -> phải -> đẩy lùi sẽ sang trái (-x,y)
+                m_rb.velocity = new Vector2(-stat.knockBackForce, yRate * stat.knockBackForce);
+            }
+            else if(dir.x < 0)
+            {// hướng x < 0 -> trái -> đẩy lùi sẽ sang phải (x,y)
+                m_rb.velocity = new Vector2(stat.knockBackForce, yRate*stat.knockBackForce );
+
+            }
+        }
     }
 
     protected void Flip(Direction movedir)

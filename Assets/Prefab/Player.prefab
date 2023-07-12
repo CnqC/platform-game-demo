@@ -123,7 +123,7 @@ MonoBehaviour:
   invincibleLayer: 9
   deadLayer: 11
   m_anim: {fileID: 7356213653868612349}
-  deadVfx: {fileID: 0}
+  deadVfxPb: {fileID: 0}
   jumpingFallingMultipiler: 5
   lowJumpingMultipiler: 5
   sp: {fileID: 0}

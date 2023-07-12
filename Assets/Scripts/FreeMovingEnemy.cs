@@ -62,7 +62,7 @@ public class FreeMovingEnemy : Enemy
 
         if (canRotate)
         {
-            angle = Mathf.Atan2(m_movingDir.x, m_movingDir.y) * Mathf.Rad2Deg;
+            angle = Mathf.Atan2(m_movingDir.y, m_movingDir.x) * Mathf.Rad2Deg;
         }
 
         if(m_movingDir.x > 0f)
@@ -106,7 +106,9 @@ public class FreeMovingEnemy : Enemy
     }
 
 
+
     #region FSM
+    
     protected override void Moving_Enter()
     {
         base.Moving_Enter(); 
