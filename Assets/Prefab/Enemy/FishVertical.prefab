@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7675986015549648333}
   - component: {fileID: 7675986015549648335}
   - component: {fileID: 7675986015549648334}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Graphic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 7675986015549648332}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 9.920243}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7675986016470774162}
@@ -117,7 +117,11 @@ GameObject:
   - component: {fileID: 7675986016470774162}
   - component: {fileID: 5543684375728907865}
   - component: {fileID: 917832722443018932}
-  m_Layer: 10
+  - component: {fileID: -4507418990621088857}
+  - component: {fileID: 1444046587920476105}
+  - component: {fileID: 8630411604538176607}
+  - component: {fileID: 8034924067602089933}
+  m_Layer: 11
   m_Name: FishVertical
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -155,7 +159,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -174,6 +178,81 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.010777831, y: 0.00000035762787}
-  m_Size: {x: 1.1189339, y: 1.7703009}
+  m_Offset: {x: 0.0014454552, y: 0.012223721}
+  m_Size: {x: 0.75223404, y: 1.208028}
   m_Direction: 0
+--- !u!114 &-4507418990621088857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7675986016470774161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84387147d5322649b6dcb0709358081, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderers:
+  - {fileID: 7675986015549648335}
+  flashRate: 0.1
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  flashColor: {r: 1, g: 0.3339622, b: 0.3339622, a: 0}
+  OnCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1444046587920476105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7675986016470774161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2430b1018adc44d4d9296d6b27cc6053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disable: 1
+  detectMethod: 0
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  detectDist: 3
+--- !u!114 &8630411604538176607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7675986016470774161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ed2aa9ed88738241b52a81bc3199ca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDir: 2
+  movingDist: 3
+  speed: 0
+  isOnlyUp: 1
+  isAuto: 0
+--- !u!114 &8034924067602089933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7675986016470774161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75e4bec38ff10df439bba9cd62b5f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat: {fileID: 11400000, guid: 3eda55907625d6d48927e477017b7c30, type: 2}
+  normalLayer: 11
+  invincibleLayer: 9
+  deadLayer: 10
+  m_anim: {fileID: 7675986015549648334}
+  deadVfxPb: {fileID: 8534138522002403807, guid: 3c7134498fcca0944a9e5e6910a8d25a, type: 3}
+  flashVfx: {fileID: -4507418990621088857}
+  movingDist: 3

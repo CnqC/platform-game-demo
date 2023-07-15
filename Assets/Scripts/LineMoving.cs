@@ -135,7 +135,7 @@ public class LineMoving : MonoBehaviour
     { 
         Gizmos.color = Color.cyan;
         //m_startingPos = transform.position; // vị trí ban đầu = vị trí hiện tại
-        GetMovingDestination(); // lấy tọa độ điểm đich
-        Gizmos.DrawLine(transform.position, m_destination);
+        //GetMovingDestination(); // lấy tọa độ điểm đich
+        //Gizmos.DrawLine(transform.position, m_destination);
     }
 }

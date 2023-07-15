@@ -25,6 +25,7 @@ public class Actor : MonoBehaviour
 
     [Header("Vfx: ")]
     public GameObject deadVfxPb;
+    public FlashVfx flashVfx;
     protected Actor m_WhoHit; // bị đối tượng nào đánh trúng
 
     protected int m_curHp; // máu hiện tại
@@ -90,6 +91,10 @@ public class Actor : MonoBehaviour
         // bị đẩy lùi -> sẽ có 1 khoảng thời gian -> thời gian lùi và hết trạng thái -> dùng courotine
         StartCoroutine(StopKnockBack());
 
+        if (flashVfx)
+        {
+            flashVfx.Flash(stat.invincibleTime); // trong trạng thái bất bại thì sẽ chạy hiệu ứng flash.
+        }
     }
     protected IEnumerator StopKnockBack()
     {

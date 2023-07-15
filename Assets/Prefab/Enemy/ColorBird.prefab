@@ -11,7 +11,10 @@ GameObject:
   - component: {fileID: 410805429607452021}
   - component: {fileID: 6770923433335834630}
   - component: {fileID: 8050925130470278163}
-  m_Layer: 10
+  - component: {fileID: 1953309993473089376}
+  - component: {fileID: -20620210070681007}
+  - component: {fileID: -3351555974490330933}
+  m_Layer: 11
   m_Name: ColorBird
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -71,6 +74,65 @@ CapsuleCollider2D:
   m_Offset: {x: -0.091062665, y: 0.07381632}
   m_Size: {x: 1.7487371, y: 1.4594561}
   m_Direction: 1
+--- !u!114 &1953309993473089376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410805429607452026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84387147d5322649b6dcb0709358081, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderers:
+  - {fileID: 410805429981638002}
+  flashRate: 0.1
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  flashColor: {r: 1, g: 0.3339622, b: 0.3339622, a: 0}
+  OnCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-20620210070681007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410805429607452026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2430b1018adc44d4d9296d6b27cc6053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disable: 0
+  detectMethod: 1
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  detectDist: 3
+--- !u!114 &-3351555974490330933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410805429607452026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87b90c5870bb0784798b7d810c750e56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat: {fileID: 11400000, guid: 1f6f4ee5460786f4c963a63388d2b38b, type: 2}
+  normalLayer: 11
+  invincibleLayer: 9
+  deadLayer: 10
+  m_anim: {fileID: 410805429981638003}
+  deadVfxPb: {fileID: 8534138522002403807, guid: 3c7134498fcca0944a9e5e6910a8d25a, type: 3}
+  flashVfx: {fileID: 1953309993473089376}
+  movingDist: 3
+  canRotate: 1
 --- !u!1 &410805429981638001
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,7 +144,7 @@ GameObject:
   - component: {fileID: 410805429981638000}
   - component: {fileID: 410805429981638002}
   - component: {fileID: 410805429981638003}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Graphic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +160,7 @@ Transform:
   m_GameObject: {fileID: 410805429981638001}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 9.920243}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 410805429607452021}

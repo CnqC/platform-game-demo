@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7194624494605369181}
-  - component: {fileID: 8063182092723967553}
   m_Layer: 8
   m_Name: FirePoint
   m_TagString: Untagged
@@ -25,28 +24,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4287838728334760126}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.904, y: -0.365, z: 0}
+  m_LocalPosition: {x: 0.798, y: -0.383, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6528870380115275362}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8063182092723967553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4287838728334760126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a85df5285b4a9294fbc6b9446bee3c25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  firePoint: {fileID: 0}
-  bulletPb: {fileID: 0}
 --- !u!1 &6528870379535563466
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,6 +45,7 @@ GameObject:
   - component: {fileID: 385354794}
   - component: {fileID: 385354793}
   - component: {fileID: 38066080}
+  - component: {fileID: 3178468625360002434}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -168,9 +153,10 @@ MonoBehaviour:
   stat: {fileID: 11400000, guid: 19145081be4281b468dd245b560c8c35, type: 2}
   normalLayer: 8
   invincibleLayer: 9
-  deadLayer: 11
+  deadLayer: 10
   m_anim: {fileID: 7356213653868612349}
   deadVfxPb: {fileID: 0}
+  flashVfx: {fileID: 3178468625360002434}
   jumpingFallingMultipiler: 5
   lowJumpingMultipiler: 5
   sp: {fileID: 0}
@@ -178,6 +164,26 @@ MonoBehaviour:
   defaultCol: {fileID: 385354792}
   flyingCol: {fileID: 385354794}
   inWaterCol: {fileID: 385354793}
+--- !u!114 &3178468625360002434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6528870379535563466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84387147d5322649b6dcb0709358081, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderers:
+  - {fileID: 6528870380115275373}
+  flashRate: 0.1
+  normalColor: {r: 1, g: 1, b: 1, a: 0}
+  flashColor: {r: 0.9056604, g: 0.41987112, b: 0.27682447, a: 0}
+  OnCompleted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6528870380115275363
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,7 +323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 2048
   atkRadius: 0.7
   offset: {x: 1, y: -0.4, z: 0}
   m_player: {fileID: 38066080}

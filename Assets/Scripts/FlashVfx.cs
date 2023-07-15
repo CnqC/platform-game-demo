@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using CnqC.PlatformGame;
 
-namespace UDEV.PlatformGame
-{
     public class FlashVfx : MonoBehaviour
     {
         public SpriteRenderer[] spriteRenderers;
@@ -94,4 +92,4 @@ namespace UDEV.PlatformGame
             }
         }
     }
-}
+

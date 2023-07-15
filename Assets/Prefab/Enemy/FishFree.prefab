@@ -14,15 +14,14 @@ GameObject:
   - component: {fileID: 969468601}
   - component: {fileID: 4974350013506263072}
   - component: {fileID: 7492252502124463603}
-  - component: {fileID: 2559391743777232767}
-  - component: {fileID: -7222486073282496959}
+  - component: {fileID: 2029013237579723186}
   m_Layer: 11
-  m_Name: FishHoz
+  m_Name: FishFree
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8406803609681918438
 Transform:
   m_ObjectHideFlags: 0
@@ -89,11 +88,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disable: 0
-  detectMethod: 0
+  detectMethod: 1
   targetLayer:
     serializedVersion: 2
     m_Bits: 256
-  detectDist: 4
+  detectDist: 3
 --- !u!114 &4974350013506263072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,8 +130,8 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
-  detectDist: 2.5
---- !u!114 &2559391743777232767
+  detectDist: 3
+--- !u!114 &2029013237579723186
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,34 +140,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 8406803609681918439}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ed2aa9ed88738241b52a81bc3199ca0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveDir: 0
-  movingDist: 3
-  speed: 0
-  isOnlyUp: 0
-  isAuto: 0
---- !u!114 &-7222486073282496959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8406803609681918439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75e4bec38ff10df439bba9cd62b5f84a, type: 3}
+  m_Script: {fileID: 11500000, guid: 01c556a7aa8cf4e44a848876d2bf5468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 11400000, guid: 37ac3190f7b3d654abbf241c78905096, type: 2}
-  normalLayer: 10
+  normalLayer: 11
   invincibleLayer: 9
-  deadLayer: 11
+  deadLayer: 10
   m_anim: {fileID: 8406803611745219313}
   deadVfxPb: {fileID: 8534138522002403807, guid: 3c7134498fcca0944a9e5e6910a8d25a, type: 3}
   flashVfx: {fileID: 4974350013506263072}
   movingDist: 3
+  canRotate: 1
 --- !u!1 &8406803611745219319
 GameObject:
   m_ObjectHideFlags: 0

@@ -125,7 +125,7 @@ public class Enemy : Actor
     protected virtual void GotHit_Update() { }
     protected virtual void GotHit_Exit() { }
     protected virtual  void Dead_Enter() {
-        if (deadVfxPb) // check hiệu ứng dead có:
+        if (deadVfxPb && IsDead) // check hiệu ứng dead có:
         {   // tạo hiệu ứng dead ngay vị trí của enemy lúc chuyển sang, không xoay
             Instantiate(deadVfxPb, transform.position, Quaternion.identity ); 
         }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4161974685214369222}
   - component: {fileID: 2585943436857681640}
   - component: {fileID: 8079806608801175130}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Graphic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,10 +95,10 @@ Animator:
   m_GameObject: {fileID: 670984389590973277}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4252b7e8ba4b8d2468a0990dc531d2e0, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7fa6f0bd3fa6b76409420b9ec0f17b1d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -120,7 +120,10 @@ GameObject:
   - component: {fileID: 1070558230}
   - component: {fileID: 1070558231}
   - component: {fileID: 1070558235}
-  m_Layer: 10
+  - component: {fileID: 3201762976561649574}
+  - component: {fileID: -6571633197586294357}
+  - component: {fileID: -2494296717949191143}
+  m_Layer: 11
   m_Name: OrganeDino
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -177,8 +180,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.09643448, y: 0.011991944}
-  m_Size: {x: 1.0412052, y: 1.5400332}
+  m_Offset: {x: 0.13029087, y: 0.011991944}
+  m_Size: {x: 0.97349244, y: 1.5400332}
   m_Direction: 0
 --- !u!114 &1070558230
 MonoBehaviour:
@@ -192,12 +195,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e4bec38ff10df439bba9cd62b5f84a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stat: {fileID: 11400000, guid: 37ac3190f7b3d654abbf241c78905096, type: 2}
-  normalLayer: 10
+  stat: {fileID: 11400000, guid: 337473ee47c733d40ad12012e70cf030, type: 2}
+  normalLayer: 11
   invincibleLayer: 9
-  deadLayer: 11
+  deadLayer: 10
   m_anim: {fileID: 8079806608801175130}
-  deadVfxPb: {fileID: 0}
+  deadVfxPb: {fileID: 8534138522002403807, guid: 3c7134498fcca0944a9e5e6910a8d25a, type: 3}
+  flashVfx: {fileID: 0}
   movingDist: 0
 --- !u!114 &1070558231
 MonoBehaviour:
@@ -234,3 +238,61 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   detectDist: 3
+--- !u!114 &3201762976561649574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881507620729337230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84387147d5322649b6dcb0709358081, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderers:
+  - {fileID: 2585943436857681640}
+  flashRate: 0.1
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  flashColor: {r: 1, g: 0.3339622, b: 0.3339622, a: 0}
+  OnCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-6571633197586294357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881507620729337230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2430b1018adc44d4d9296d6b27cc6053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disable: 0
+  detectMethod: 0
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  detectDist: 3
+--- !u!114 &-2494296717949191143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881507620729337230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75e4bec38ff10df439bba9cd62b5f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat: {fileID: 11400000, guid: 337473ee47c733d40ad12012e70cf030, type: 2}
+  normalLayer: 11
+  invincibleLayer: 9
+  deadLayer: 10
+  m_anim: {fileID: 8079806608801175130}
+  deadVfxPb: {fileID: 8534138522002403807, guid: 3c7134498fcca0944a9e5e6910a8d25a, type: 3}
+  flashVfx: {fileID: 3201762976561649574}
+  movingDist: 3
