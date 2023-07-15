@@ -16,6 +16,6 @@ MonoBehaviour:
   moveSpeed: 1.5
   damage: 1
   knockBackTime: 3
-  knockBackForce: 3
+  knockBackForce: 1
   invincibleTime: 0
   chasingSpeed: 2

@@ -1,5 +1,52 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4287838728334760126
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7194624494605369181}
+  - component: {fileID: 8063182092723967553}
+  m_Layer: 8
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7194624494605369181
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4287838728334760126}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.904, y: -0.365, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6528870380115275362}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8063182092723967553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4287838728334760126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a85df5285b4a9294fbc6b9446bee3c25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  firePoint: {fileID: 0}
+  bulletPb: {fileID: 0}
 --- !u!1 &6528870379535563466
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,6 +188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6528870380115275362}
   - component: {fileID: 6528870380115275373}
+  - component: {fileID: 50905841921915531}
   - component: {fileID: 7356213653868612349}
   - component: {fileID: 170401489667948216}
   m_Layer: 8
@@ -163,6 +211,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7146873699475860993}
+  - {fileID: 7194624494605369181}
   m_Father: {fileID: 6528870379535563477}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -218,6 +267,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &50905841921915531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6528870380115275363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a85df5285b4a9294fbc6b9446bee3c25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 38066080}
+  firePoint: {fileID: 7194624494605369181}
+  bulletPb: {fileID: 8893763274335422202, guid: 58d50e002bbdcee46923f702a70aec28, type: 3}
 --- !u!95 &7356213653868612349
 Animator:
   serializedVersion: 5
@@ -254,8 +318,8 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
-  atkRadius: 0
-  offset: {x: 0, y: 0, z: 0}
+  atkRadius: 0.7
+  offset: {x: 1, y: -0.4, z: 0}
   m_player: {fileID: 38066080}
 --- !u!1 &8216360575657750056
 GameObject:
