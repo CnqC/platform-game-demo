@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 560993711476917823}
   - component: {fileID: 551233026630873295}
   - component: {fileID: -496900641353745879}
+  - component: {fileID: 4483956277887858595}
+  - component: {fileID: 7868935023748386394}
   m_Layer: 0
   m_Name: MovingFlatform_Brown
   m_TagString: MovingPlatform
@@ -66,11 +68,47 @@ CapsuleCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: -0.011795499, y: 0.18874022}
   m_Size: {x: 3.1469302, y: 0.8348682}
   m_Direction: 1
+--- !u!251 &4483956277887858595
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324498725431699266}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
+--- !u!114 &7868935023748386394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324498725431699266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ed2aa9ed88738241b52a81bc3199ca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDir: 0
+  movingDist: 3
+  speed: 3
+  isOnlyUp: 0
+  isAuto: 1
 --- !u!1 &8337497804119158103
 GameObject:
   m_ObjectHideFlags: 0
