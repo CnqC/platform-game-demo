@@ -17,6 +17,7 @@ public class LineMoving : MonoBehaviour
     private Vector3 m_backDir; // hướng di chuyển ngược lại
     private Vector3 m_startingPos;// vị trí đầu tiên của đối tượng
     private Rigidbody2D m_rb;
+    private bool m_isGizmosHaveStartPos;
     
 
     public Vector2 Destination { get => m_destination;  }
@@ -132,10 +133,14 @@ public class LineMoving : MonoBehaviour
     }
 
     private void OnDrawGizmos()
-    { 
+    {  // chỉ vẽ 1 lần trong và sẽ được lặp lại sau khi mà vật đó tới đích
         Gizmos.color = Color.cyan;
-        //m_startingPos = transform.position; // vị trí ban đầu = vị trí hiện tại
-        //GetMovingDestination(); // lấy tọa độ điểm đich
-        //Gizmos.DrawLine(transform.position, m_destination);
+        if (!m_isGizmosHaveStartPos) 
+        {
+            m_startingPos = transform.position; // vị trí ban đầu = vị trí hiện tại
+            GetMovingDestination(); // lấy tọa độ điểm đich
+            m_isGizmosHaveStartPos = true;
+        }
+        Gizmos.DrawLine(transform.position, m_destination);
     }
 }

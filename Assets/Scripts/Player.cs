@@ -318,6 +318,66 @@ public class Player : Actor
                 TakeDamege(enemy.stat.damage,enemy);
             }
         }
+
+        if (col.gameObject.CompareTag(GameTag.MovingPlatform.ToString()))
+        {
+            m_rb.isKinematic = true;
+            transform.SetParent(col.gameObject.transform); // cho palyer làm con của thằng movingplatform luôn
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D col) // trong lúc đang va chạm
+    {
+        if (col.gameObject.CompareTag(GameTag.MovingPlatform.ToString()))
+        {
+            if(obstacleChker.IsOnGround && m_fsm.State == PlayerAnimState.Idle) // player vừa ở dưới đất, và đang trong trạng thái idle
+            {
+                m_rb.isKinematic = true;
+                transform.SetParent(col.gameObject.transform); // cho palyer làm con của thằng movingplatform luôn
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag(GameTag.MovingPlatform.ToString()))
+        {
+            if (!obstacleChker.IsOnGround ) // không ở dưới đất
+            {
+                m_rb.isKinematic = false;
+                transform.SetParent(null); // khi ra khỏi cái platform thì sẽ bỏ k còn là lớp con 
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag(GameTag.Thorn.ToString()))
+        {
+            TakeDamege(1);
+        }
+
+        if (col.CompareTag(GameTag.CheckPoint.ToString()))
+        {
+            // lưu lại dữ liệu cho player khi đi qua checkpoint
+        }
+        if (col.CompareTag(GameTag.CollecTable.ToString()))
+        {
+            // xử lý việc thu thập các icon Collectable
+        }
+
+        if (col.CompareTag(GameTag.Door.ToString()))
+        {
+            // xử lý việc mở cửa trong game
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.CompareTag(GameTag.DeadZone.ToString())) // va chạm với vùng chết -> chết 
+        {
+            Dead();
+        }
     }
 
     #region FSM
