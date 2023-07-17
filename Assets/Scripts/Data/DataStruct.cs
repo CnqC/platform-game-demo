@@ -93,7 +93,7 @@ public enum PlayerCollider // collider cho từng loại của player
     InWater,
     None
 }
-public enum Collectable // các dạng collectable
+public enum CollectableType // các dạng collectable
 {
     Hp,
     Live,

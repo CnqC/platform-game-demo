@@ -364,6 +364,12 @@ public class Player : Actor
         if (col.CompareTag(GameTag.CollecTable.ToString()))
         {
             // xử lý việc thu thập các icon Collectable
+            Collectable collectable = GetComponent<Collectable>();
+
+            if (collectable)
+            {
+                collectable.Trigger(); // trong trigger có lớp ảo triggerHandle , còn triggerHandle thì sẽ tùy collectable sẽ overide nó
+            }
         }
 
         if (col.CompareTag(GameTag.Door.ToString()))
