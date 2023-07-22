@@ -13,7 +13,7 @@ public class Player : Actor
     [Header("Smooth Jumping Setting: ")]
     [Range(0f, 5f)]
     public float jumpingFallingMultipiler = 2.5f;
-    [Range(0f, 5f)]
+    [Range(0f, 5f)] 
     public float lowJumpingMultipiler = 2.5f;
 
     [Header("References: ")]

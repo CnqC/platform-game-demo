@@ -104,9 +104,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ed2aa9ed88738241b52a81bc3199ca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveDir: 0
+  moveDir: 2
   movingDist: 3
-  speed: 3
+  speed: 2
   isOnlyUp: 0
   isAuto: 1
 --- !u!1 &8337497804119158103
