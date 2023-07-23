@@ -135,6 +135,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 38066080, guid: 75263be2a6bf35545834c8cee0160979, type: 3}
+      propertyPath: inWaterCol
+      value: 
+      objectReference: {fileID: 790773229}
     - target: {fileID: 6528870379535563466, guid: 75263be2a6bf35545834c8cee0160979, type: 3}
       propertyPath: m_Name
       value: Player
@@ -145,11 +149,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6528870379535563477, guid: 75263be2a6bf35545834c8cee0160979, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.06
+      value: 17.16
       objectReference: {fileID: 0}
     - target: {fileID: 6528870379535563477, guid: 75263be2a6bf35545834c8cee0160979, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.23
+      value: -6.39
       objectReference: {fileID: 0}
     - target: {fileID: 6528870379535563477, guid: 75263be2a6bf35545834c8cee0160979, type: 3}
       propertyPath: m_LocalPosition.z
@@ -182,6 +186,14 @@ PrefabInstance:
     - target: {fileID: 6528870379535563477, guid: 75263be2a6bf35545834c8cee0160979, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528870380115275373, guid: 75263be2a6bf35545834c8cee0160979, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 77872444, guid: f2023f8f578d64b4a81fabc8bfa917f7, type: 3}
+    - target: {fileID: 6528870380115275373, guid: 75263be2a6bf35545834c8cee0160979, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75263be2a6bf35545834c8cee0160979, type: 3}
@@ -392,6 +404,11 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2036817105577833414, guid: 1e23179a81c53914fb1814c0fa539344, type: 3}
   m_PrefabInstance: {fileID: 2128785140}
+  m_PrefabAsset: {fileID: 0}
+--- !u!70 &790773229 stripped
+CapsuleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 385354793, guid: 75263be2a6bf35545834c8cee0160979, type: 3}
+  m_PrefabInstance: {fileID: 505278218}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &806646396
 PrefabInstance:
@@ -3306,14 +3323,6 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1251830692049541798, guid: 9d5d98a20c383a84e95ec80852d3465c, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.88039166
-      objectReference: {fileID: 0}
-    - target: {fileID: 1251830692049541798, guid: 9d5d98a20c383a84e95ec80852d3465c, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.903093
-      objectReference: {fileID: 0}
-    - target: {fileID: 1251830692049541798, guid: 9d5d98a20c383a84e95ec80852d3465c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21.39
       objectReference: {fileID: 0}
@@ -3356,18 +3365,6 @@ PrefabInstance:
     - target: {fileID: 4923520011278099888, guid: 9d5d98a20c383a84e95ec80852d3465c, type: 3}
       propertyPath: m_Name
       value: WaterDeep
-      objectReference: {fileID: 0}
-    - target: {fileID: 5322049692748343394, guid: 9d5d98a20c383a84e95ec80852d3465c, type: 3}
-      propertyPath: m_SortingLayer
-      value: -2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5322049692748343394, guid: 9d5d98a20c383a84e95ec80852d3465c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5322049692748343394, guid: 9d5d98a20c383a84e95ec80852d3465c, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -86086131
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d5d98a20c383a84e95ec80852d3465c, type: 3}

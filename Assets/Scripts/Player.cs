@@ -66,6 +66,18 @@ public class Player : Actor
     private void Update()
     {
 
+        if (sp)
+        {
+            if (obstacleChker.IsOnWater)
+            {
+                sp.sortingOrder = (int)SpriteOrder.Inwater;
+            }
+            else
+            {
+                sp.sortingOrder = (int)SpriteOrder.Normal;
+            }
+        }
+
 
         ActionHandle();
         if(m_isInvincible == true)
@@ -125,7 +137,7 @@ public class Player : Actor
     protected override void Dead()
     {
         if (IsDead) return; // chết = return
-
+        base.Dead(); // ghi đè lại lớp cha
         ChangeState(PlayerAnimState.Dead); 
         
     }

@@ -49,7 +49,7 @@ public enum GameScene // lại lại scene
 public enum SpriteOrder
 {
     Normal = 5,
-    Inwater = 2
+    Inwater = 1
 }
 
 public enum PlayerAnimState // các trạng thái (state) ở trong phần animator
