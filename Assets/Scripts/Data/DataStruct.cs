@@ -33,7 +33,7 @@ public enum GameTag // lưu lại các tag trong game
     Enemy,
     MovingPlatform,
     Thorn,
-    CollecTable,
+    CollectTable,
     CheckPoint,
     Door,
     DeadZone

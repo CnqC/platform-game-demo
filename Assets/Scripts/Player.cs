@@ -349,7 +349,7 @@ public class Player : Actor
             }
         }
     }
-
+    
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag(GameTag.Thorn.ToString()))
@@ -361,7 +361,7 @@ public class Player : Actor
         {
             // lưu lại dữ liệu cho player khi đi qua checkpoint
         }
-        if (col.CompareTag(GameTag.CollecTable.ToString()))
+        if (col.CompareTag(GameTag.CollectTable.ToString()))
         {
             // xử lý việc thu thập các icon Collectable
             Collectable collectable = GetComponent<Collectable>();
