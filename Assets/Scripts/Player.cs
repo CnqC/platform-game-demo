@@ -79,6 +79,13 @@ public class Player : Actor
             }
         }
 
+        if (IsDead)
+        {
+            // nếu như Player Dead
+
+            GameManager.Ins.SetMapSpeed(0f);
+        }
+
 
         ActionHandle();
         if(m_isInvincible == true)
@@ -114,6 +121,7 @@ public class Player : Actor
 
         if (GamePadController.Ins.IsStatic)
         {
+            GameManager.Ins.SetMapSpeed(0f);
             // khi nhả hết nút ra 
             m_rb.velocity = new Vector2(0f, m_rb.velocity.y); //  nhân vật di chuyển bị trượt 1 đoạn khi k bấm nút gì hết -> stop vận tốc trục X lại
         }
@@ -143,7 +151,7 @@ public class Player : Actor
         
     }
 
-    private void Move(Direction dir)
+    private void Move (Direction dir)
     {
         if (m_isKnockBack) return;
 
@@ -156,6 +164,15 @@ public class Player : Actor
             m_hozDir = dir == Direction.left ? -1 : 1; // nếu di chuyển sang trái thì biến m_hordir = -1 còn không thì = 1
 
             m_rb.velocity = new Vector2(m_hozDir * CurSpeed, m_rb.velocity.y);
+
+            if (CameraFollow.ins.IsHozStuck) // nếu như mà Player bị ngăn k thể di chuyển
+            {
+                //GameManager.Ins.SetMapSpeed(0f); 
+            }
+            else
+            {   // khi mà Player không bị ngăn bởi bất cứ vật nào, thì BG sau của Player sẽ di chuyển ngược hướng với lại Player
+                GameManager.Ins.SetMapSpeed(-m_hozDir * m_curSpeed); 
+            }
         } 
         else if (dir == Direction.Up || dir == Direction.Down)
         {
