@@ -82,4 +82,6 @@ public class PlayerDectect : MonoBehaviour
             Gizmos.DrawSphere(transform.position,detectDist); 
         }
     }
+
+    
 }

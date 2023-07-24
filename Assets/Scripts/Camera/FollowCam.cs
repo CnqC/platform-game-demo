@@ -5,7 +5,7 @@ using CnqC.PlatformGame;
 
 public class FollowCam : MonoBehaviour
 {
-    /*
+
     public Direction dir;
     private Camera m_cam;
     private Vector3 m_startingPos;
@@ -20,8 +20,8 @@ public class FollowCam : MonoBehaviour
 
     private void Update()
     {
-        
-        switch(dir)
+
+        switch (dir)
         {
             case Direction.Up:
                 if (m_cam.transform.position.y < m_startingPos.y)
@@ -30,12 +30,13 @@ public class FollowCam : MonoBehaviour
             m_cam.transform.position.x,
             m_startingPos.y,
             transform.position.z);
-                }else
+                }
+                else
                 {
                     transform.position = new Vector3(
                         m_cam.transform.position.x,
                         m_cam.transform.position.y, 0f
-                        ) ;
+                        );
                 }
                 break;
             case Direction.Down:
@@ -60,8 +61,8 @@ public class FollowCam : MonoBehaviour
                         m_cam.transform.position.y, 0f
                         );
                 break;
-        } 
-        
-}
-*/
+        }
+
+    }
+
 }

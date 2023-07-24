@@ -8,7 +8,8 @@ using MonsterLove.StateMachine;// tạo ra hệ thống thay đổi trạng thá
 public class Player : Actor
 {
 
-    private StateMachine<PlayerAnimState> m_fsm;
+    private StateMachine<PlayerAnimState> m_fsm; 
+    // khởi tạo đối tượng từ StateMachine, với kiểu dữ liệu từ PlayerAnimState, có tên là m_fsm
     
     [Header("Smooth Jumping Setting: ")]
     [Range(0f, 5f)]
@@ -57,7 +58,7 @@ public class Player : Actor
     {
         base.Awake();
 
-       
+        // sử dụng Initialize( kiểu dự liệu  tên) là cách tốt nhất để khởi tạo đối tượng bắt nguồn từ monobehavior 
         m_fsm = StateMachine<PlayerAnimState>.Initialize(this);
         m_fsm.ChangeState(PlayerAnimState.Idle);
       
@@ -591,13 +592,15 @@ public class Player : Actor
             // nếu k còn trên thang
             ChangeState(PlayerAnimState.OnAir);
         }
-       
+    
         m_rb.gravityScale = 0f; // xét lại gravity trên thang
 
         Helper.PlayAnim(m_anim, PlayerAnimState.OnLadder.ToString());
     }
     private void OnLadder_Exit() { }
-    private void Dead_Enter() { }
+    private void Dead_Enter() {
+        CamShake.ins.ShakeTrigger(0.7f, 0.1f, 1);
+    }
     private void Dead_Update() {
        
 

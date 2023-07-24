@@ -197,6 +197,7 @@ GameObject:
   - component: {fileID: 50905841921915531}
   - component: {fileID: 7356213653868612349}
   - component: {fileID: 170401489667948216}
+  - component: {fileID: 1865789465}
   m_Layer: 8
   m_Name: Graphic
   m_TagString: Untagged
@@ -327,6 +328,18 @@ MonoBehaviour:
   atkRadius: 0.7
   offset: {x: 1, y: -0.4, z: 0}
   m_player: {fileID: 38066080}
+--- !u!114 &1865789465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6528870380115275363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e5186f9a9489b94393106fdb156fc55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8216360575657750056
 GameObject:
   m_ObjectHideFlags: 0
