@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Player stat
   m_EditorClassIdentifier: 
   hp: 3
-  moveSpeed: 5
+  moveSpeed: 6
   damage: 1
   knockBackTime: 0.2
   knockBackForce: 3
   invincibleTime: 0.8
-  jumpForce: 8
+  jumpForce: 9
   flyingSpeed: 1.5
   ladderSpeed: 2
   swimSpeed: 4
