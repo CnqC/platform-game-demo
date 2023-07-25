@@ -453,7 +453,7 @@ public class Player : Actor
         m_rb.isKinematic = false; // trả lại bình thường
 
        
-        if (m_rb.velocity.y < 0  && !obstacleChker.IsOnGround ) // khi mà cái vận tốc của y <0( tức là đang rơi, và k chạm đất)   
+        if ((m_rb.velocity.y < 0  && !obstacleChker.IsOnGround) || CameraFollow.ins.IsHozStuck ) // khi mà cái vận tốc của y <0( tức là đang rơi, và k chạm đất) hoặc là Player bị chặn  
         {
             ChangeState(PlayerAnimState.OnAir);
         }
