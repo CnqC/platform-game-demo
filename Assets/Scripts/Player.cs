@@ -470,6 +470,7 @@ public class Player : Actor
     private void OnAir_Update()
     {
         m_rb.gravityScale = m_startingGravity; // trả lại cái gravity ban đầu
+        HozMoveChecking();
 
         if (obstacleChker.IsOnGround ) // nếu chạm đất
         {
