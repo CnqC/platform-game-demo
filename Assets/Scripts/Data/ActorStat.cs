@@ -10,7 +10,7 @@ public class ActorStat : ScriptableObject
     public int hp;
     public float moveSpeed;
     public int damage;
-
+        
     [Header("Invincible")] // thiết đặt khoảng thời gian khi mà player hay enemy bị đánh trúng sẽ tàng hình
     public float knockBackTime; 
     public float knockBackForce;// đẩy lùi về phía sau

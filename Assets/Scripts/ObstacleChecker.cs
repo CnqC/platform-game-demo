@@ -36,24 +36,6 @@ public class ObstacleChecker : MonoBehaviour
 
         m_isOnDeepWater = waterHit;
 
-       // if (IsOnGround)
-       // {
-       //     Debug.Log("dang o tren mat dat");
-       //     Debug.Log(IsOnGround);
-       // }
-       // else { 
-       //     Debug.Log("Dang tren khong");
-       //     Debug.Log(IsOnGround);
-       // }
-
-
-       // if (IsOnDeepWater == true )
-       //     Debug.Log("Dang O duoi nuoc");
-       //else
-       //     Debug.Log("Dang o tren mat nuoc");
-       
-
-
     }
 
     private bool OverlapChecking(LayerMask layerToCheck)

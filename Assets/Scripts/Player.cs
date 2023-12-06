@@ -113,6 +113,8 @@ public class Player : Actor
             m_curStat = (PlayerStat)stat;
         }
     }
+
+    #region ActionPlayer
     private void ActionHandle()
     {
         // xử lý action của player
@@ -142,15 +144,17 @@ public class Player : Actor
 
         ReduceActionRate(ref m_isAttacked, ref m_attackTime, m_curStat.attackRate); // delay lại tấn công của palyer
     }
-
+    #endregion
     protected override void Dead()
     {
+     
         if (IsDead) return; // chết = return
         base.Dead(); // ghi đè lại lớp cha
         ChangeState(PlayerAnimState.Dead); 
         
     }
 
+    #region Move for Player
     private void Move (Direction dir)
     {
         if (m_isKnockBack) return;
@@ -181,7 +185,9 @@ public class Player : Actor
             m_rb.velocity = new Vector2(m_rb.velocity.x, m_vertDir * CurSpeed);
         }
     }
+    #endregion
 
+    #region Make Jump animation for player
     private void Jump()
     {
         GamePadController.Ins.CanJump = false; // tránh bấm nút jump nhiều lần, chỉ 1 lần
@@ -209,6 +215,7 @@ public class Player : Actor
         }
     }
 
+    #endregion
     private void JumpChecking()
     {
         if (GamePadController.Ins.CanJump)
@@ -453,7 +460,7 @@ public class Player : Actor
         m_rb.isKinematic = false; // trả lại bình thường
 
        
-        if ((m_rb.velocity.y < 0  && !obstacleChker.IsOnGround) || CameraFollow.ins.IsHozStuck ) // khi mà cái vận tốc của y <0( tức là đang rơi, và k chạm đất) hoặc là Player bị chặn  
+        if ((m_rb.velocity.y < 0  && !obstacleChker.IsOnGround) || m_rb.velocity.y < 0 && CameraFollow.ins.IsHozStuck) // khi mà cái vận tốc của y <0( tức là đang rơi, và k chạm đất) hoặc là Player bị chặn  
         {
             ChangeState(PlayerAnimState.OnAir);
         }
@@ -620,8 +627,8 @@ public class Player : Actor
         CamShake.ins.ShakeTrigger(0.7f, 0.1f, 1);
     }
     private void Dead_Update() {
-       
 
+        gameObject.layer = deadLayer;// chuyển về layer dead;
         Helper.PlayAnim(m_anim, PlayerAnimState.Dead.ToString());
     }
     private void Dead_Exit() { }
