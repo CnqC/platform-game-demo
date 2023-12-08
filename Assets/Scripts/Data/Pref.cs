@@ -20,7 +20,7 @@ public static class Pref
    public static void SetBool(string key, bool isOn)
     {
         if (isOn)
-        {
+        { 
             PlayerPrefs.SetInt(key, 1);
         }
         else

@@ -101,3 +101,12 @@ public enum CollectableType // các dạng collectable
     Key,
     None
 }
+
+[System.Serializable] 
+public class LevelItem
+{
+    // for each level
+    public int price;
+    public Sprite preview; // ảnh trc của level
+     
+} 

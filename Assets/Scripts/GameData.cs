@@ -21,6 +21,17 @@ public class GameData : SingleTon<GameData>
     public List<float> gamePlayTime; // lưu lại thời gian chơi
     public List<float> completeTimes; // thời gian hoàn thành mỗi level
 
+
+    private void Awake()
+    {
+        // create
+        base.Awake();
+        checkPoints = new List<Vector3>();
+        levelUnlocked = new List<bool>();
+        levelPasseds = new List<bool>();
+        gamePlayTime = new List<float>();
+        completeTimes = new List<float>();
+    }
     public void SaveData()
     {
         Pref.GameData = JsonUtility.ToJson(this); // chuyển tất cả các thông tin được lưu xuống thành dạng json 
@@ -48,7 +59,9 @@ public class GameData : SingleTon<GameData>
     {
         if (datalist == null|| idx < 0) return;
 
-        if(datalist.Count <=0 || (datalist.Count >0 && idx > datalist.Count))
+        if(datalist.Count <=0 || (datalist.Count >0 && idx >= datalist.Count)) 
+            // trường hợp indx > count , trong list có slg = 2, indx =3,4,5 --> add thêm vào list
+            // sẽ có trường hợp là indx = Count, ví dụ trong list có slg = 2, indx = 2 --> vẫn add thêm
         {
             datalist.Add(value);
         }
@@ -56,6 +69,8 @@ public class GameData : SingleTon<GameData>
         {
             datalist[idx] = value;
         }
+
+        //Debug.Log(GameData.Ins.curlevelId);
     }
 
     #region LEVEL
@@ -84,7 +99,7 @@ public class GameData : SingleTon<GameData>
 
 
     public float GetLevelScore(int levelId)
-    {
+    { 
         return GetValue<float>(completeTimes, levelId);
     }
 
