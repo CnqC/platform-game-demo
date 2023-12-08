@@ -63,7 +63,7 @@ public class FreeMovingEnemy : Enemy
         if (canRotate)
         {
             angle = Mathf.Atan2(m_movingDir.y, m_movingDir.x) * Mathf.Rad2Deg;
-        }
+        }   
 
         if(m_movingDir.x > 0f)
         {
