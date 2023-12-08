@@ -213,6 +213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 23084982}
   - component: {fileID: 23084983}
+  - component: {fileID: 23084984}
   m_Layer: 5
   m_Name: Stars
   m_TagString: Untagged
@@ -251,6 +252,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 23084981}
   m_CullTransparentMesh: 1
+--- !u!95 &23084984
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23084981}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 916952260df8fb04aa618e0d0295abbf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &78670107
 GameObject:
   m_ObjectHideFlags: 0
@@ -1474,8 +1496,8 @@ RectTransform:
   - {fileID: 2076650206}
   - {fileID: 1561076861}
   - {fileID: 532655383}
-  - {fileID: 1298972339}
   - {fileID: 416014085}
+  - {fileID: 1298972339}
   - {fileID: 1636560496}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -1843,6 +1865,7 @@ GameObject:
   m_Component:
   - component: {fileID: 290818890}
   - component: {fileID: 290818891}
+  - component: {fileID: 290818892}
   m_Layer: 5
   m_Name: Stars
   m_TagString: Untagged
@@ -1881,6 +1904,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 290818889}
   m_CullTransparentMesh: 1
+--- !u!95 &290818892
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290818889}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 916952260df8fb04aa618e0d0295abbf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &314967755
 GameObject:
   m_ObjectHideFlags: 0
@@ -2155,7 +2199,7 @@ RectTransform:
   m_Children:
   - {fileID: 231693145}
   m_Father: {fileID: 240671954}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
