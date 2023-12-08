@@ -109,4 +109,12 @@ public class LevelItem
     public int price;
     public Sprite preview; // ảnh trc của level
      
-} 
+}
+
+[System.Serializable]
+public class ShopItem
+{
+    public CollectableType itemtype;
+    public int price;
+    public Sprite preview;
+}
