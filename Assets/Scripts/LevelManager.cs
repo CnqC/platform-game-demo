@@ -7,10 +7,9 @@ public class LevelManager : SingleTon<LevelManager>
 {
     public LevelItem[] levels;
     private int m_curlevelId;
-    private int m_levelId;
+  
 
     public int CurlevelId { get => m_curlevelId; set => m_curlevelId = value; }
-    public int LevelId { get => m_levelId; set => m_levelId = value; }
 
     public LevelItem CurLevel
     {

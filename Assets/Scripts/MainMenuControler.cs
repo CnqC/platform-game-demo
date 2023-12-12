@@ -14,7 +14,7 @@ public class MainMenuControler : MonoBehaviour
         else
         {
             // first time
-            //GameData.Ins.SaveData();
+            GameData.Ins.SaveData();
             LevelManager.Ins.Init(); 
         }
 
