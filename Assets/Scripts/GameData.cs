@@ -13,7 +13,7 @@ public class GameData : SingleTon<GameData>
     public int hp;
     public int life;
     public int bullet;
-    public int ket;
+    public int key;
       
     public List<Vector3> checkPoints; // checkpoint của từng map
     public List<bool> levelUnlocked; // ktra level đã mở khóa hay chưa
