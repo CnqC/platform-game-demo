@@ -87,7 +87,7 @@ public enum DetectMethod
 }
 
 public enum PlayerCollider // collider cho từng loại của player
-{
+{   
     Default,
     Flying,
     InWater,
@@ -108,6 +108,7 @@ public class LevelItem
     // for each level
     public int price;
     public Sprite preview; // ảnh trc của level
+    public Goal goal;
      
 }
 
@@ -117,4 +118,29 @@ public class ShopItem
     public CollectableType itemtype;
     public int price;
     public Sprite preview;
+}
+
+[System.Serializable]
+public class Goal
+{ 
+    // star for player
+    public int timeOneStar;
+    public int timeTwoStar;
+    public int timeThreeStar;
+
+    public int GetStar(int time)
+    {
+        if(time < timeThreeStar)
+        {
+            return 3; //số star
+        }
+        else if (time < timeTwoStar)
+        {
+            return 2;
+        }
+        else
+        {
+            return 1;
+        }
+    }
 }

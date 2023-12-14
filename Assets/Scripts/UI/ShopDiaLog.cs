@@ -82,7 +82,7 @@ public class ShopDiaLog : Dialog
                 case CollectableType.Key:
                     GameData.Ins.key++;
                     break;
-
+                     
             }
             GameData.Ins.SaveData();
             UpdateUI(); 

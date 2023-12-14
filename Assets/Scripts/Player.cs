@@ -298,6 +298,9 @@ public class Player : Actor
         if (IsDead) return;
         base.TakeDamege(dmg, whoHit);
 
+        //save hp's player 
+        GameData.Ins.hp = m_curHp;
+        GameData.Ins.SaveData();
         if(m_curHp > 0 && !m_isInvincible)
         {
             ChangeState(PlayerAnimState.GotHit);

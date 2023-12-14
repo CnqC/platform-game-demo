@@ -118,9 +118,9 @@ public class GameData : SingleTon<GameData>
     }
 
 
-    public bool GetCheckPoint(int levelId) // lấy ra 1 checkpoint ứng với từng level 
+    public Vector3 GetCheckPoint(int levelId) // lấy ra 1 checkpoint ứng với từng level 
     {
-        return GetValue<bool>(levelPasseds, levelId);
+        return GetValue<Vector3>(checkPoints, levelId); 
     }
 
     public void UpdateCheckPoint(int levelId, Vector3 checkPoint) // cập nhập lại các checkPoint ứng với các level với giá trị..
@@ -137,8 +137,9 @@ public class GameData : SingleTon<GameData>
 
     public void UpdatePlayTime(int levelId, float playTime) // cập nhập lại các giá trị thời gian chơi ứng với chỉ số Levelid
     {
-        UpdateValue<float> (ref gamePlayTime, levelId  , playTime);
+        UpdateValue<float> (ref gamePlayTime, levelId , playTime);
     }
+
 
     public bool IsLevelUnlocked(int id) // level đã mở chưa
     {
