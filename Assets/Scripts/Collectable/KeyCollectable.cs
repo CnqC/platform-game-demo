@@ -5,15 +5,13 @@ using CnqC.PlatformGame;
 
 public class KeyCollectable : Collectable
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void TriggerHandle()
     {
-        
-    }
+        GameManager.Ins.CurKey += m_bonus;
+        GameData.Ins.key = GameManager.Ins.CurKey;
+        GameData.Ins.SaveData();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //Update Game GUI
+
     }
 }

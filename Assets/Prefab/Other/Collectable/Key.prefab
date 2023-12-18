@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4598510462618998329}
   - component: {fileID: 3118476357847892542}
   - component: {fileID: 7627719297800062570}
+  - component: {fileID: 4678792055750503230}
   m_Layer: 0
   m_Name: Key
   m_TagString: CollectTable
@@ -71,6 +72,23 @@ CircleCollider2D:
   m_Offset: {x: -0.059693277, y: 0}
   serializedVersion: 2
   m_Radius: 0.44030672
+--- !u!114 &4678792055750503230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3285374846415794311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d58b6a84062adfb4491ee5ed229d5bf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 3
+  minBonus: 1
+  maxBonus: 1
+  collisionSfx: {fileID: 0}
+  destroyVfxPb: {fileID: 8534138522002403807, guid: 3c7134498fcca0944a9e5e6910a8d25a, type: 3}
 --- !u!1 &5633789175816517090
 GameObject:
   m_ObjectHideFlags: 0

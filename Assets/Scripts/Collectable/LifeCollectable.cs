@@ -5,15 +5,12 @@ using CnqC.PlatformGame;
 
 public class LifeCollectable : Collectable
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void TriggerHandle()
     {
-        
-    }
+        GameManager.Ins.CurLive += m_bonus;
+        GameData.Ins.life = GameManager.Ins.CurLive;
+        GameData.Ins.SaveData();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // Update Game GUI
     }
 }

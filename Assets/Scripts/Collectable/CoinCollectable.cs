@@ -5,15 +5,8 @@ using CnqC.PlatformGame;
 
 public class CoinCollectable : Collectable
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void TriggerHandle()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GameManager.Ins.AddCoins(m_bonus);
     }
 }

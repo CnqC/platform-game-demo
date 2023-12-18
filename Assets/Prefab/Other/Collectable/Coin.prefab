@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 7755401026356514341}
   - component: {fileID: -7697079966074636595}
   - component: {fileID: 3868051883748305497}
+  - component: {fileID: 5680624086914494450}
   m_Layer: 0
   m_Name: Coin
   m_TagString: CollectTable
@@ -177,3 +178,20 @@ CircleCollider2D:
   m_Offset: {x: 0.041223407, y: -0.08440983}
   serializedVersion: 2
   m_Radius: 0.42147923
+--- !u!114 &5680624086914494450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9054955511342436080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c10cd7c451fe348ac9cffac64fd5e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 4
+  minBonus: 1
+  maxBonus: 5
+  collisionSfx: {fileID: 0}
+  destroyVfxPb: {fileID: 8534138522002403807, guid: 3c7134498fcca0944a9e5e6910a8d25a, type: 3}

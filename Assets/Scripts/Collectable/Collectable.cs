@@ -25,10 +25,18 @@ public class Collectable : MonoBehaviour
 
         Init();
     }
-
+    protected void DestroyWhenLevelPassed()
+    {
+        if (GameData.Ins.IsLevelPassed(LevelManager.Ins.CurlevelId))
+        {
+            // neu level dc clear 1 lan r
+            // xóa đi cái collectable để ng chơi k thể vào đó và lấy nó
+            Destroy(gameObject);
+        }
+    }
     public virtual void Init()
     {
-       
+        DestroyWhenLevelPassed();
     }
 
     public virtual void TriggerHandle()
