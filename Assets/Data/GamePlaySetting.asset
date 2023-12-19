@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: GamePlaySetting
   m_EditorClassIdentifier: 
   isOnMoblie: 0
-  startingLive: 0
-  startingBullet: 0
+  startingLive: 1
+  startingBullet: 3

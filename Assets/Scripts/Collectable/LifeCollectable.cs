@@ -12,5 +12,7 @@ public class LifeCollectable : Collectable
         GameData.Ins.SaveData();
 
         // Update Game GUI
+
+        GUIManager.Ins.UpdateLife(GameData.Ins.life);
     }
 }

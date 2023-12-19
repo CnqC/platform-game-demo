@@ -306,6 +306,7 @@ public class Player : Actor
             ChangeState(PlayerAnimState.GotHit);
         }
 
+        GUIManager.Ins.UpdateHp(m_curHp);
     }
 
     public void ChangeState(PlayerAnimState state)
@@ -404,7 +405,7 @@ public class Player : Actor
         if (col.CompareTag(GameTag.CollectTable.ToString()))
         {
             // xử lý việc thu thập các icon Collectable
-            Collectable collectable = GetComponent<Collectable>();
+            Collectable collectable = col.GetComponent<Collectable>();
 
             if (collectable)
             {
@@ -633,6 +634,9 @@ public class Player : Actor
 
         gameObject.layer = deadLayer;// chuyển về layer dead;
         Helper.PlayAnim(m_anim, PlayerAnimState.Dead.ToString());
+
+        // update Hp's pkayer
+        GUIManager.Ins.UpdateHp(m_curHp);
     }
     private void Dead_Exit() { }
     private void Idle_Enter() 
@@ -707,6 +711,9 @@ public class Player : Actor
         {
             ChangeState(PlayerAnimState.Idle);
         }
+
+        //update hp's player
+        GUIManager.Ins.UpdateHp(m_curHp); 
     }
 
     private void GotHit_Exit()

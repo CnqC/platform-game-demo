@@ -35,6 +35,17 @@ public class GameManager : SingleTon<GameManager>
         LoadData();
 
         StartCoroutine(CamFollowDeLay());
+
+        if (setting.isOnMoblie)
+        {
+            // on moblie
+            GUIManager.Ins.showMobileGamePad(true);
+        }
+        else
+        {
+            // on pc
+            GUIManager.Ins.showMobileGamePad(false);
+        }
     }
 
      private void LoadData()
@@ -75,6 +86,14 @@ public class GameManager : SingleTon<GameManager>
         {
             m_gamePlayTime = gamePlayTime;
         }
+
+        GUIManager.Ins.UpdateLife(m_curLive);
+        GUIManager.Ins.UpdateHp(player.CurHp);
+        GUIManager.Ins.UpdateKey(m_curKey);
+        GUIManager.Ins.UpdateCoin(m_curCoin);
+        GUIManager.Ins.UpdateBullet(m_curBullet);
+        GUIManager.Ins.UpdatePlaytime(Helper.TimeConvert(m_gamePlayTime));
+        
     }
 
     public void BackToCheckPoint()
@@ -95,6 +114,8 @@ public class GameManager : SingleTon<GameManager>
         m_curCoin += coins;
         GameData.Ins.coin += coins;
         GameData.Ins.SaveData();
+
+        GUIManager.Ins.UpdateCoin(m_curCoin);
     }
 
     public void Replay()
@@ -140,6 +161,11 @@ public class GameManager : SingleTon<GameManager>
             ); ;
 
         GameData.Ins.SaveData();
+
+        if (GUIManager.Ins.lvFailDiaLog)
+        {
+            GUIManager.Ins.lvClearDiaLog.Show(true);
+        }
     }
 
     public void LevelClear()
@@ -147,6 +173,14 @@ public class GameManager : SingleTon<GameManager>
         if (map)
         {
             m_fsm.ChangeState(GameState.Win);
+            GameData.Ins.UpdateLevelScore(LevelManager.Ins.CurlevelId, Mathf.RoundToInt(m_gamePlayTime));
+            m_goalStar = LevelManager.Ins.CurLevel.goal.GetStar(Mathf.RoundToInt(m_gamePlayTime));
+            GameData.Ins.SaveData();
+        }
+
+        if (GUIManager.Ins.lvClearDiaLog)
+        {
+            GUIManager.Ins.lvClearDiaLog.Show(true);
         }
     }
 
@@ -184,6 +218,8 @@ public class GameManager : SingleTon<GameManager>
         if (GameData.Ins.IsLevelPassed(LevelManager.Ins.CurlevelId)) return;
 
         m_gamePlayTime += Time.deltaTime; // tăng gian ng chơi lên
+
+        GUIManager.Ins.UpdatePlaytime(Helper.TimeConvert(m_gamePlayTime)); // timeconvert chuyển từ số sang thời gian phút, giây
     }
     protected void Playing_Exit() { }
     protected void Win_Enter() { }

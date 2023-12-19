@@ -14,5 +14,6 @@ public class BulletCollectable : Collectable
         GameData.Ins.SaveData();
 
         // Update Game UI
+        GUIManager.Ins.UpdateBullet(GameData.Ins.bullet);
     }
 }

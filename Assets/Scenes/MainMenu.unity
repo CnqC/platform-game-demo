@@ -1654,14 +1654,34 @@ MonoBehaviour:
   levels:
   - price: 0
     preview: {fileID: 21300000, guid: 8414e4ad5555d0f4eb13656d0129dc72, type: 3}
+    goal:
+      timeOneStar: 0
+      timeTwoStar: 0
+      timeThreeStar: 0
   - price: 300
     preview: {fileID: 21300000, guid: 9a6c2ffb8ed841b419d5d8ccd0fd7770, type: 3}
+    goal:
+      timeOneStar: 0
+      timeTwoStar: 0
+      timeThreeStar: 0
   - price: 500
     preview: {fileID: 21300000, guid: 0518ef33574c39944b1fbe428bf6275a, type: 3}
+    goal:
+      timeOneStar: 0
+      timeTwoStar: 0
+      timeThreeStar: 0
   - price: 800
     preview: {fileID: 21300000, guid: e86ccaafb74c4b1438f18a550b8de185, type: 3}
+    goal:
+      timeOneStar: 0
+      timeTwoStar: 0
+      timeThreeStar: 0
   - price: 1200
     preview: {fileID: 21300000, guid: 2741fb4b54828bc4caaa4d5bf61e44de, type: 3}
+    goal:
+      timeOneStar: 0
+      timeTwoStar: 0
+      timeThreeStar: 0
 --- !u!4 &788274754
 Transform:
   m_ObjectHideFlags: 0
@@ -3007,7 +3027,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1268198100}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1546803697}
+        m_TargetAssemblyTypeName: LevelSellectDiaLog, Assembly-CSharp
+        m_MethodName: Show
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1268198100
 MonoBehaviour:
   m_ObjectHideFlags: 0

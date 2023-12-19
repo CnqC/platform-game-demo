@@ -12,6 +12,7 @@ public class KeyCollectable : Collectable
         GameData.Ins.SaveData();
 
         //Update Game GUI
-
+        GUIManager.Ins.UpdateKey(GameData.Ins.key);
+ 
     }
 }
