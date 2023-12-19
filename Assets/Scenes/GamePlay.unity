@@ -356,7 +356,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 78670110}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 416014088}
+        m_TargetAssemblyTypeName: PauseDiaLog, Assembly-CSharp
+        m_MethodName: Exit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &78670110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2105,6 +2117,7 @@ GameObject:
   - component: {fileID: 416014085}
   - component: {fileID: 416014087}
   - component: {fileID: 416014086}
+  - component: {fileID: 416014088}
   m_Layer: 5
   m_Name: PauseDiaLog
   m_TagString: Untagged
@@ -2171,6 +2184,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 416014084}
   m_CullTransparentMesh: 1
+--- !u!114 &416014088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416014084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae8fd1aa14b8b60459d3feba889cd995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  titleText: {fileID: 0}
+  contentText: {fileID: 0}
 --- !u!1001 &434008700
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3265,7 +3292,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 561421556}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 416014088}
+        m_TargetAssemblyTypeName: PauseDiaLog, Assembly-CSharp
+        m_MethodName: Replay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &561421556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7964,7 +8003,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1181276690}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 416014088}
+        m_TargetAssemblyTypeName: PauseDiaLog, Assembly-CSharp
+        m_MethodName: OpenSetting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1181276690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8797,7 +8848,7 @@ MonoBehaviour:
   keyCountingTxt: {fileID: 1169828286}
   mobieGamepad: {fileID: 1561076860}
   settingDiaLog: {fileID: 0}
-  pauseDiaLog: {fileID: 0}
+  pauseDiaLog: {fileID: 416014088}
   lvClearDiaLog: {fileID: 0}
   lvFailDiaLog: {fileID: 0}
 --- !u!4 &1425525761
@@ -9242,7 +9293,7 @@ GameObject:
   - component: {fileID: 1543920468}
   - component: {fileID: 1543920467}
   m_Layer: 5
-  m_Name: SaveButton
+  m_Name: ResumeBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9311,7 +9362,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1543920468}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 416014088}
+        m_TargetAssemblyTypeName: PauseDiaLog, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1543920468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10863,7 +10926,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1836064148}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 416014088}
+        m_TargetAssemblyTypeName: PauseDiaLog, Assembly-CSharp
+        m_MethodName: Show
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1836064148
 MonoBehaviour:
   m_ObjectHideFlags: 0
