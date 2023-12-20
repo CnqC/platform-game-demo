@@ -32,7 +32,7 @@ public class PauseDiaLog : Dialog
     public void Exit()
     {
         Close(); // đóng hộp thoại
-        SceneController.Ins.LoadScene("MainMenu");
+        SceneController.Ins.LoadScene(GameScene.MainMenu.ToString());
     }
     public override void Close()
     {

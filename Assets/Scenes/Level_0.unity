@@ -2575,7 +2575,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 515909222}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 518646408}
+        m_TargetAssemblyTypeName: LevelFailDiaLog, Assembly-CSharp
+        m_MethodName: Replay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &515909222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2625,6 +2637,7 @@ GameObject:
   - component: {fileID: 518646405}
   - component: {fileID: 518646407}
   - component: {fileID: 518646406}
+  - component: {fileID: 518646408}
   m_Layer: 5
   m_Name: LevelFailedDiaLog
   m_TagString: Untagged
@@ -2691,6 +2704,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 518646404}
   m_CullTransparentMesh: 1
+--- !u!114 &518646408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518646404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b9f2fb0a124cc40bd5ee4817b717fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  titleText: {fileID: 0}
+  contentText: {fileID: 0}
+  timeCountingTxt: {fileID: 1551956939}
+  coinCountingTxt: {fileID: 530764905}
 --- !u!1001 &523078456
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7045,7 +7074,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1503434924}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 518646408}
+        m_TargetAssemblyTypeName: LevelFailDiaLog, Assembly-CSharp
+        m_MethodName: BachToMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1503434924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8085,7 +8126,7 @@ MonoBehaviour:
   settingDiaLog: {fileID: 2145437280}
   pauseDiaLog: {fileID: 351388841}
   lvClearDiaLog: {fileID: 608521463}
-  lvFailDiaLog: {fileID: 0}
+  lvFailDiaLog: {fileID: 518646408}
 --- !u!4 &1748403033
 Transform:
   m_ObjectHideFlags: 0

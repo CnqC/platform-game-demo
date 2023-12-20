@@ -74,5 +74,7 @@ public class LevelClearDiaLog : Dialog
         GameManager.Ins.NextLevel();
     }
 
+
+    
     #endregion
 }
