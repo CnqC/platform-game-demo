@@ -401,6 +401,8 @@ public class Player : Actor
         if (col.CompareTag(GameTag.CheckPoint.ToString()))
         {
             // lưu lại dữ liệu cho player khi đi qua checkpoint
+            // lưu lại dữ liệu checkpoint
+            GameManager.Ins.SaveCheckPoint();
         }
         if (col.CompareTag(GameTag.CollectTable.ToString()))
         {
@@ -416,6 +418,18 @@ public class Player : Actor
         if (col.CompareTag(GameTag.Door.ToString()))
         {
             // xử lý việc mở cửa trong game
+
+            Door door = col.GetComponent<Door>();
+
+            if(door != null)
+            {
+                door.OpenDoor();
+
+                if (door.IsOpen)
+                {
+                    ChangeState(PlayerAnimState.SayHello);
+                }
+            }
         }
     }
 
