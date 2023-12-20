@@ -5,5 +5,5 @@ using CnqC.PlatformGame;
 
 public class SettingDiaLog : Dialog
 {
-    // xử lý hộp thoại setting
+    // sử lý hộp thoại setting
 }

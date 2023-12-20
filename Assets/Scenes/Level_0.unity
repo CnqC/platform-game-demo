@@ -3383,6 +3383,7 @@ GameObject:
   - component: {fileID: 608521460}
   - component: {fileID: 608521462}
   - component: {fileID: 608521461}
+  - component: {fileID: 608521463}
   m_Layer: 5
   m_Name: LevelClearDiaLog
   m_TagString: Untagged
@@ -3449,6 +3450,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 608521459}
   m_CullTransparentMesh: 1
+--- !u!114 &608521463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608521459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c56e1e6e3588e4ba149ba310c29f9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  titleText: {fileID: 0}
+  contentText: {fileID: 0}
+  stars:
+  - {fileID: 524505991}
+  - {fileID: 411111610}
+  - {fileID: 1676046688}
+  activeStar: {fileID: -1333392272, guid: b51894e4d6ab9ba46b53fe22ea5db9b0, type: 3}
+  deactiveStar: {fileID: 961350613, guid: b51894e4d6ab9ba46b53fe22ea5db9b0, type: 3}
+  liveCountingtxt: {fileID: 1438302419}
+  hpCountingTxt: {fileID: 1439857993}
+  timecountingTxt: {fileID: 231560939}
+  coinCountingTxt: {fileID: 326795097}
 --- !u!1 &627107271
 GameObject:
   m_ObjectHideFlags: 0
@@ -6707,7 +6732,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1479284114}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 608521463}
+        m_TargetAssemblyTypeName: LevelClearDiaLog, Assembly-CSharp
+        m_MethodName: Replay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1479284114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6759,7 +6796,7 @@ GameObject:
   - component: {fileID: 1498529171}
   - component: {fileID: 1498529170}
   m_Layer: 5
-  m_Name: SaveButton
+  m_Name: NextLevelButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6828,7 +6865,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1498529171}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 608521463}
+        m_TargetAssemblyTypeName: LevelClearDiaLog, Assembly-CSharp
+        m_MethodName: nextLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1498529171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8033,9 +8082,9 @@ MonoBehaviour:
   bulletCountingTxt: {fileID: 331468229}
   keyCountingTxt: {fileID: 1339951880}
   mobieGamepad: {fileID: 4876871}
-  settingDiaLog: {fileID: 0}
+  settingDiaLog: {fileID: 2145437280}
   pauseDiaLog: {fileID: 351388841}
-  lvClearDiaLog: {fileID: 0}
+  lvClearDiaLog: {fileID: 608521463}
   lvFailDiaLog: {fileID: 0}
 --- !u!4 &1748403033
 Transform:
@@ -12096,3 +12145,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2999472915519964703, guid: 315c59c856a01b64dbc84eba339a482c, type: 3}
   m_PrefabInstance: {fileID: 2145437278}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2145437280 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5791983125458533178, guid: 315c59c856a01b64dbc84eba339a482c, type: 3}
+  m_PrefabInstance: {fileID: 2145437278}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13ee87a8b66e3b84a9c24e546a6f37b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

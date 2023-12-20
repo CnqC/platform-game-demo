@@ -25,7 +25,7 @@ public class GameManager : SingleTon<GameManager>
     public int CurCoin { get => m_curCoin; set => m_curCoin = value; }
     public int CurKey { get => m_curKey; set => m_curKey = value; }
     public int CurBullet { get => m_curBullet; set => m_curBullet = value; }
-    public float TimeCounting { get => m_gamePlayTime; }
+    public float GameplayTime { get => m_gamePlayTime; }
     public int GoalStar { get => m_goalStar;  }
     public StateMachine<GameState> Fsm { get => m_fsm; }
 
