@@ -118,6 +118,14 @@ public class GameManager : SingleTon<GameManager>
         GUIManager.Ins.UpdateCoin(m_curCoin);
     }
 
+    public void ReduceBullet()
+    {
+        m_curBullet--;
+        GameManager.Ins.CurBullet = m_curBullet;
+        GameData.Ins.SaveData();
+        GUIManager.Ins.UpdateBullet(m_curBullet);
+    }
+
     public void Replay()
     {
         SceneController.Ins.LoadLevelScene(LevelManager.Ins.CurlevelId);
@@ -215,7 +223,7 @@ public class GameManager : SingleTon<GameManager>
     protected void Playing_Enter() { }
     protected void Playing_Update() 
     {
-        if (GameData.Ins.IsLevelPassed(LevelManager.Ins.CurlevelId)) return;
+        if (GameData.Ins.IsLevelPassed(LevelManager.Ins.CurlevelId)) return; 
 
         m_gamePlayTime += Time.deltaTime; // tăng gian ng chơi lên
 

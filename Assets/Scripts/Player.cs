@@ -167,7 +167,16 @@ public class Player : Actor
 
             m_hozDir = dir == Direction.left ? -1 : 1; // nếu di chuyển sang trái thì biến m_hordir = -1 còn không thì = 1
 
-            m_rb.velocity = new Vector2(m_hozDir * CurSpeed, m_rb.velocity.y);
+            if (GameManager.Ins.setting.isOnMoblie) // vận tốc trên mobile và pc khác nhau
+            {
+                m_rb.velocity = new Vector2(GamePadController.Ins.joystick.xValue*m_curSpeed, m_rb.velocity.y);
+            }
+            else
+            {
+                // pc 
+                m_rb.velocity = new Vector2(m_hozDir * CurSpeed, m_rb.velocity.y);
+            }
+           
 
             if (CameraFollow.ins.IsHozStuck) // nếu như mà Player bị ngăn k thể di chuyển
             {
@@ -182,7 +191,16 @@ public class Player : Actor
         {
             m_vertDir = dir == Direction.Down ? -1 : 1;
 
-            m_rb.velocity = new Vector2(m_rb.velocity.x, m_vertDir * CurSpeed);
+            
+
+            if (GameManager.Ins.setting.isOnMoblie)
+            {
+                m_rb.velocity = new Vector2(m_rb.velocity.x, GamePadController.Ins.joystick.yValue * m_curSpeed);
+            }
+            else
+            {
+                m_rb.velocity = new Vector2(m_rb.velocity.x, m_vertDir * m_curSpeed);
+            }
         }
     }
     #endregion
@@ -285,7 +303,7 @@ public class Player : Actor
         {
             if (m_isAttacked) return; // khi nào tấn công r thì return -> tránh spam
             ChangeState(PlayerAnimState.HammerAttack);
-        } else if(GamePadController.Ins.CanFire == true)
+        } else if(GamePadController.Ins.CanFire == true && GameManager.Ins.CurBullet >0)
         {
 
             // ktra xem còn đủ đạn hay k thì mới chuyển trạng thái

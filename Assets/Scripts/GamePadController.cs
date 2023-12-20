@@ -5,6 +5,8 @@ using CnqC.PlatformGame;
 
 public class GamePadController : SingleTon<GamePadController>
 {
+    public Joystick joystick;
+
     public float jumpHoldingTime; // thời gian mà ng chơi ấn nút nhảy
 
     private bool m_canMoveLeft;
@@ -82,5 +84,17 @@ public class GamePadController : SingleTon<GamePadController>
                 }
             }
         }
+        else
+        {
+            if (joystick == null) return;
+
+            m_canMoveLeft = joystick.xValue < 0 ? true : false;
+            m_canMoveRight = joystick.xValue > 0 ? true : false;
+            m_canMoveUp = joystick.yValue > 0 ? true : false;
+            m_canMoveDown = joystick.yValue < 0 ? true : false;
+
+        }
+
+        
     }
 }

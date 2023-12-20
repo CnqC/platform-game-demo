@@ -36,6 +36,11 @@ public class ObstacleChecker : MonoBehaviour
 
         m_isOnDeepWater = waterHit;
 
+        if(GameManager.Ins.setting.isOnMoblie && m_isOnGround)
+        {
+            GamePadController.Ins.IsJumpHolding = false;
+        }
+
     }
 
     private bool OverlapChecking(LayerMask layerToCheck)

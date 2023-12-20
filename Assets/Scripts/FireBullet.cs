@@ -13,7 +13,7 @@ public class FireBullet : MonoBehaviour
 
     public void Fire()
     {
-        if (!bulletPb || !player || !firePoint) return;
+        if (!bulletPb || !player || !firePoint || GameManager.Ins.CurBullet <= 0) return;
 
         // check xem player có quay mặt sang trái k, nếu có sang trái thì phải - speed để có thể cùng hướng trái
         m_curSpeed = player.IsFacingLeft == true ? -(bulletPb.speed) : bulletPb.speed;
@@ -24,6 +24,7 @@ public class FireBullet : MonoBehaviour
         bulletClone.owner = player;
 
         // giảm số lượng đạn xuống 1 đơn vị
+        GameManager.Ins.ReduceBullet();
     
     }
 }
