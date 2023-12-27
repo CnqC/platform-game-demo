@@ -18,7 +18,7 @@ public class AudioController : MonoBehaviour
     public AudioSource sfxAus;
 
     [Header("Game sounds and musics: ")]
-    public AudioClip attack;
+    public AudioClip attack; 
     public AudioClip buy;
     public AudioClip dead;
     public AudioClip enemyDead;

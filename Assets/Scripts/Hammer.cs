@@ -50,6 +50,7 @@ public class Hammer : MonoBehaviour
                 enemy.TakeDamege(m_player.stat.damage, m_player);
             }
         }
+   
     }
 
     private void OnDrawGizmos()

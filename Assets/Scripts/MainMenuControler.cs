@@ -20,5 +20,8 @@ public class MainMenuControler : MonoBehaviour
 
         // sau khi loạt thao tác cho first 
         Pref.isFirstTime = false;
+
+        // start menu music
+        AudioController.ins.PlayMusic(AudioController.ins.menus);
     }
 }

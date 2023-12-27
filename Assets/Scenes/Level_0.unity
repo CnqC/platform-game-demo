@@ -8520,25 +8520,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 38066080, guid: 75263be2a6bf35545834c8cee0160979, type: 3}
-      propertyPath: deadLayer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 385354792, guid: 75263be2a6bf35545834c8cee0160979, type: 3}
-      propertyPath: m_Size.x
-      value: 1.2385473
-      objectReference: {fileID: 0}
-    - target: {fileID: 385354792, guid: 75263be2a6bf35545834c8cee0160979, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.058998585
-      objectReference: {fileID: 0}
     - target: {fileID: 6528870379535563466, guid: 75263be2a6bf35545834c8cee0160979, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6528870379535563466, guid: 75263be2a6bf35545834c8cee0160979, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6528870379535563477, guid: 75263be2a6bf35545834c8cee0160979, type: 3}
       propertyPath: m_RootOrder
@@ -8583,14 +8567,6 @@ PrefabInstance:
     - target: {fileID: 6528870379535563477, guid: 75263be2a6bf35545834c8cee0160979, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7146873699475860993, guid: 75263be2a6bf35545834c8cee0160979, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.277
-      objectReference: {fileID: 0}
-    - target: {fileID: 7146873699475860993, guid: 75263be2a6bf35545834c8cee0160979, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75263be2a6bf35545834c8cee0160979, type: 3}

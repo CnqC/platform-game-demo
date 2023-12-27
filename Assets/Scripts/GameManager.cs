@@ -46,6 +46,8 @@ public class GameManager : SingleTon<GameManager>
             // on pc
             GUIManager.Ins.showMobileGamePad(false);
         }
+
+        AudioController.ins.PlayBackgroundMusic();
     }
 
      private void LoadData()
@@ -174,6 +176,8 @@ public class GameManager : SingleTon<GameManager>
         {
             GUIManager.Ins.lvClearDiaLog.Show(true);
         }
+
+        AudioController.ins.PlaySound(AudioController.ins.fail);
     }
 
     public void LevelClear()
@@ -190,6 +194,8 @@ public class GameManager : SingleTon<GameManager>
         {
             GUIManager.Ins.lvClearDiaLog.Show(true);
         }
+
+        AudioController.ins.PlaySound(AudioController.ins.missionComplete);
     }
 
     private IEnumerator CamFollowDeLay()

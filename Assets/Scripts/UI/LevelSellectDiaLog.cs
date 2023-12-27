@@ -80,6 +80,10 @@ public class LevelSellectDiaLog : Dialog
 
                 UpdateUI();// update giao diện dialog
                 SceneController.Ins.LoadLevelScene(levelIdx);
+
+
+                //add sound when unlock level
+                AudioController.ins.PlaySound(AudioController.ins.unlock);
             }
             else
             {

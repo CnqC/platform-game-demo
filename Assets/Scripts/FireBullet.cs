@@ -25,6 +25,9 @@ public class FireBullet : MonoBehaviour
 
         // giảm số lượng đạn xuống 1 đơn vị
         GameManager.Ins.ReduceBullet();
-    
+
+        // make sound when fire
+        AudioController.ins.PlaySound(AudioController.ins.fireBullet);
+
     }
 }

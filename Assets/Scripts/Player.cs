@@ -488,7 +488,10 @@ public class Player : Actor
     }
     private void Walk_Exit() { }
     private void Jump_Enter() 
-    {
+    {   // add sound when jump
+        AudioController.ins.PlaySound(AudioController.ins.jump);
+
+
         ActiveCol(PlayerCollider.Default); // bật collider default
     }
     private void Jump_Update()
@@ -539,6 +542,9 @@ public class Player : Actor
 
         ChangeStateDelay(PlayerAnimState.Idle); // khi mà chạm đất thì sẽ đợi 1 thời gian nhỏ thì chuyển sang trạng thái idle
         ActiveCol(PlayerCollider.Default);
+
+        // add sound when catch land
+        AudioController.ins.PlaySound(AudioController.ins.land);
     }
     private void Land_Update()
     {
@@ -661,6 +667,9 @@ public class Player : Actor
     private void OnLadder_Exit() { }
     private void Dead_Enter() {
         CamShake.ins.ShakeTrigger(0.7f, 0.1f, 1);
+
+        // make sound when dead
+        AudioController.ins.PlaySound(AudioController.ins.dead);
     }
     private void Dead_Update() {
 
@@ -725,7 +734,8 @@ public class Player : Actor
 
     private void GotHit_Enter()
     {
-
+        // make sound when got hit
+        AudioController.ins.PlaySound(AudioController.ins.getHit);
     }
 
     private void GotHit_Update()

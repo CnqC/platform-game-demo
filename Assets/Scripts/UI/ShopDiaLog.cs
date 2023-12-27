@@ -85,7 +85,10 @@ public class ShopDiaLog : Dialog
                      
             }
             GameData.Ins.SaveData();
-            UpdateUI(); 
+            UpdateUI();
+
+            // add sound khi buy duoc item
+            AudioController.ins.PlaySound(AudioController.ins.buy);
         }
         else
         {

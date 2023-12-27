@@ -131,6 +131,9 @@ public class Enemy : Actor
         }
 
         gameObject.SetActive(false);// ẩn enemy đi khi chết
+
+        // make sound when dead
+        AudioController.ins.PlaySound(AudioController.ins.enemyDead);
     }
     protected void Dead_Update() { }
     protected void Dead_Exit() { }

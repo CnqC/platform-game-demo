@@ -53,5 +53,7 @@ public class Collectable : MonoBehaviour
         }
         // Player Sound
         Destroy(gameObject);
+
+        AudioController.ins.PlaySound(collisionSfx);
     }
 }
