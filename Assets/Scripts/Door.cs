@@ -36,7 +36,11 @@ public class Door : MonoBehaviour
     {
         if (m_isOpen)
         {
+            GameManager.Ins.CurKey = 0;
             GameManager.Ins.LevelClear();
+
+            //update Key trên GUi
+            GUIManager.Ins.UpdateKey(GameManager.Ins.CurKey);
             return;
         }
 
@@ -56,6 +60,9 @@ public class Door : MonoBehaviour
             
             // thay đổi sprite
             DoorChecking();
+
+            //update Key trên GUI
+            GUIManager.Ins.UpdateKey(GameManager.Ins.CurKey);
         }
     }
 }

@@ -471,6 +471,7 @@ public class Player : Actor
     private void SayHello_Enter() { }
     private void SayHello_Update()
     {
+        m_rb.velocity = Vector2.zero;
         Helper.PlayAnim(m_anim, PlayerAnimState.SayHello.ToString());
     }
     private void SayHello_Exit() { }
@@ -675,6 +676,9 @@ public class Player : Actor
     private void OnLadder_Exit() { }
     private void Dead_Enter() {
         CamShake.ins.ShakeTrigger(0.7f, 0.1f, 1);
+
+        // Chết --> hiện cái levelFail
+        GameManager.Ins.LevelFail();
 
         // make sound when dead
         AudioController.ins.PlaySound(AudioController.ins.dead);

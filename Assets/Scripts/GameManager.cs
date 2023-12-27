@@ -110,7 +110,7 @@ public class GameManager : SingleTon<GameManager>
         GameData.Ins.hp = player.CurHp;
         GameData.Ins.life = m_curLive;
         GameData.Ins.SaveData();
-
+        BackToCheckPoint();
         GUIManager.Ins.UpdateLife(GameData.Ins.life); 
     } 
 
@@ -158,7 +158,7 @@ public class GameManager : SingleTon<GameManager>
         GameData.Ins.UpdatePlayTime(LevelManager.Ins.CurlevelId,m_gamePlayTime);
         GameData.Ins.UpdateCheckPoint(LevelManager.Ins.CurlevelId, new Vector3(
             player.transform.position.x - 0.5f,
-            player.transform.position.y + 0.5f,
+            player.transform.position.y + 1.5f,
             player.transform.position.z
             )); ;
 
@@ -174,7 +174,16 @@ public class GameManager : SingleTon<GameManager>
             ); ;
 
         GameData.Ins.SaveData();
+        StartCoroutine(showDiaLogLevelFailDelay());
+    }
 
+    private IEnumerator showDiaLogLevelFailDelay()
+    {
+        //show cái diaLog trễ hơn 1s sau khi chết
+        yield return new WaitForSeconds(1);
+
+
+        // hiện Dialog và phát âm thanh 
         if (GUIManager.Ins.lvFailDiaLog)
         {
             GUIManager.Ins.lvClearDiaLog.Show(true);
@@ -182,6 +191,7 @@ public class GameManager : SingleTon<GameManager>
 
         AudioController.ins.PlaySound(AudioController.ins.fail);
     }
+
 
     public void LevelClear()
     {
@@ -193,6 +203,15 @@ public class GameManager : SingleTon<GameManager>
             GameData.Ins.SaveData();
         }
 
+        StartCoroutine(showDiaLogLevelClearDelay());
+    }
+    private IEnumerator showDiaLogLevelClearDelay()
+    {
+        //show cái diaLog trễ hơn 1s sau khi thắng
+        yield return new WaitForSeconds(1);
+
+
+        // hiện Dialog và phát âm thanh 
         if (GUIManager.Ins.lvClearDiaLog)
         {
             GUIManager.Ins.lvClearDiaLog.Show(true);
@@ -200,7 +219,6 @@ public class GameManager : SingleTon<GameManager>
 
         AudioController.ins.PlaySound(AudioController.ins.missionComplete);
     }
-
     private IEnumerator CamFollowDeLay()
     {
         yield return new WaitForSeconds(0.3f);
