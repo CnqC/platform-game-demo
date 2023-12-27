@@ -108,7 +108,10 @@ public class GameManager : SingleTon<GameManager>
         m_curLive--;
         player.CurHp = player.stat.hp;
         GameData.Ins.hp = player.CurHp;
+        GameData.Ins.life = m_curLive;
         GameData.Ins.SaveData();
+
+        GUIManager.Ins.UpdateLife(GameData.Ins.life); 
     } 
 
     public void AddCoins(int coins)

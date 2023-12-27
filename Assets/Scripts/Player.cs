@@ -149,9 +149,17 @@ public class Player : Actor
     {
      
         if (IsDead) return; // chết = return
-        base.Dead(); // ghi đè lại lớp cha
-        ChangeState(PlayerAnimState.Dead); 
         
+
+        if (GameManager.Ins.CurLive > 0)
+        {
+            GameManager.Ins.Revice();
+        }
+        else
+        {
+            base.Dead(); // ghi đè lại lớp cha
+            ChangeState(PlayerAnimState.Dead);
+        }
     }
 
     #region Move for Player
