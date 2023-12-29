@@ -109,13 +109,11 @@ public class LineMoving : MonoBehaviour
         {
             case Direction.left:
                 m_rb.velocity = new Vector2(-speed, m_rb.velocity.y);
-                transform.position = new Vector2(transform.position.x, m_startingPos.y);// cố định vị trí ban đầu y
-                
-
+                //transform.position = new Vector2(transform.position.x, m_startingPos.y);// cố định vị trí ban đầu y
                 break;
             case Direction.Right:
                 m_rb.velocity = new Vector2(speed, m_rb.velocity.y);
-                transform.position = new Vector2(transform.position.x, m_startingPos.y);// cố định vị trí ban đầu y
+                //transform.position = new Vector2(transform.position.x, m_startingPos.y);// cố định vị trí ban đầu y
                 break;
             case Direction.Up:
                 m_rb.velocity = new Vector2(m_rb.velocity.x, speed);

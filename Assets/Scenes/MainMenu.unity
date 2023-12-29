@@ -1942,9 +1942,9 @@ MonoBehaviour:
   - price: 0
     preview: {fileID: 21300000, guid: 8414e4ad5555d0f4eb13656d0129dc72, type: 3}
     goal:
-      timeOneStar: 0
-      timeTwoStar: 0
-      timeThreeStar: 0
+      timeOneStar: 180
+      timeTwoStar: 120
+      timeThreeStar: 60
   - price: 300
     preview: {fileID: 21300000, guid: 9a6c2ffb8ed841b419d5d8ccd0fd7770, type: 3}
     goal:

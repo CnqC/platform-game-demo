@@ -472,6 +472,9 @@ public class Player : Actor
     private void SayHello_Enter() { }
     private void SayHello_Update()
     {
+        // winn --> fsm hello bật --> sẽ k ai chạm được
+        gameObject.layer = invincibleLayer;
+
         m_rb.velocity = Vector2.zero;
         Helper.PlayAnim(m_anim, PlayerAnimState.SayHello.ToString());
     }
@@ -513,7 +516,7 @@ public class Player : Actor
         {
             ChangeState(PlayerAnimState.OnAir);
         }
-        if (obstacleChker.IsOnGround &&(m_prevState == PlayerAnimState.Swim || m_prevState == PlayerAnimState.SwimOnDeep))
+        if (obstacleChker.IsOnGround && m_rb.velocity.y == 0)
         {
             ChangeState(PlayerAnimState.Land);
         }

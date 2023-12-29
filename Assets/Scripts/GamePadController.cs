@@ -50,6 +50,10 @@ public class GamePadController : SingleTon<GamePadController>
 
     private void Update()
     {
+
+        // chỉ nhận trạng thái khi đang chơi thôi chứ hết rồi thì ngắt code
+        if (GameManager.Ins.Fsm.State != GameState.Playing) return;
+
         if(!GameManager.Ins.setting.isOnMoblie) // k ở trên mobie
         {
             float hozCheck = Input.GetAxisRaw("Horizontal");
