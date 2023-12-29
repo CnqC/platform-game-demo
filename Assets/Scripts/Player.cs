@@ -153,6 +153,7 @@ public class Player : Actor
 
         if (GameManager.Ins.CurLive > 0)
         {
+            ChangeState(PlayerAnimState.Idle);
             GameManager.Ins.Revice();
         }
         else
@@ -512,7 +513,10 @@ public class Player : Actor
         {
             ChangeState(PlayerAnimState.OnAir);
         }
-
+        if (obstacleChker.IsOnGround &&(m_prevState == PlayerAnimState.Swim || m_prevState == PlayerAnimState.SwimOnDeep))
+        {
+            ChangeState(PlayerAnimState.Land);
+        }
         HozMoveChecking(); // đang jump thì vẫn đi sang trái sang phải vận được
 
         Helper.PlayAnim(m_anim, PlayerAnimState.Jump.ToString());
@@ -759,7 +763,15 @@ public class Player : Actor
         }
         else if (obstacleChker.IsOnWater) // dưới nước và k bị đánh thì chuyển vè trạng thái trc đó
         {
-            ChangeState(m_prevState);
+            if (obstacleChker.IsOnDeepWater)
+            {
+                ChangeState(PlayerAnimState.SwimOnDeep);
+            }
+            else
+            {
+                ChangeState(PlayerAnimState.Swim);
+            }
+            
         }
         else // k knockback hay k dưới nước thì chuyển thành idle
         {

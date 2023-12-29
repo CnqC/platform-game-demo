@@ -123,11 +123,11 @@ public class LineMoving : MonoBehaviour
                 transform.position = new Vector2(m_startingPos.x, transform.position.y);
                 break;
             case Direction.Down:
-                if (isOnlyUp) return;
-
-                m_rb.velocity = new Vector2(m_rb.velocity.x, -speed);
                 // vì ta di chuyển dọc nên sẽ cố định x
                 transform.position = new Vector2(m_startingPos.x, transform.position.y);
+                if (isOnlyUp) return;
+                m_rb.velocity = new Vector2(m_rb.velocity.x, -speed);
+               
                 break;
         }
     }
