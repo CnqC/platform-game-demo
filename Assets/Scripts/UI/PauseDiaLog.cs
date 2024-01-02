@@ -23,6 +23,11 @@ public class PauseDiaLog : Dialog
 
     public void OpenSetting()
     {
+        Close();
+        // dừng game lại khi bật lên hộp thoại setting, tránh quái nó lao ra đánh mình
+        Time.timeScale = 0f;
+
+
         if(GUIManager.Ins.settingDiaLog != null)
         {
             GUIManager.Ins.settingDiaLog.Show(true); // open SettingDiaLog

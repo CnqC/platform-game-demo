@@ -13,11 +13,18 @@ public class MainMenuControler : MonoBehaviour
         }
         else
         {
+            // lưu xuống máy ng chơi âm thanh, nhạc lần đầu
+            GameData.Ins.musicVol = AudioController.ins.musicVolume;
+            GameData.Ins.soundVol = AudioController.ins.sfxVolume;
+            GameData.Ins.SaveData();
+
             // first time
             GameData.Ins.SaveData();
             LevelManager.Ins.Init(); 
         }
 
+        AudioController.ins.setSoundVolume(GameData.Ins.soundVol);
+        AudioController.ins.SetMusicVolume(GameData.Ins.musicVol);
         // sau khi loạt thao tác cho first 
         Pref.isFirstTime = false;
 

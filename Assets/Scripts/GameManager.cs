@@ -29,6 +29,11 @@ public class GameManager : SingleTon<GameManager>
     public int GoalStar { get => m_goalStar;  }
     public StateMachine<GameState> Fsm { get => m_fsm; }
 
+
+    private void Update()
+    {
+        Debug.Log(m_fsm.State);
+    }
     private void Start()
     {
         

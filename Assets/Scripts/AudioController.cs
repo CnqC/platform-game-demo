@@ -117,6 +117,13 @@ public class AudioController : MonoBehaviour
     public void SetMusicVolume(float vol)
     {
         if (musicAus) musicAus.volume = vol;
+        musicVolume = vol;
+    }
+
+    public void setSoundVolume(float vol)
+    {
+        if (sfxAus) sfxAus.volume = vol;
+        sfxVolume = vol;
     }
 
     /// <summary>
