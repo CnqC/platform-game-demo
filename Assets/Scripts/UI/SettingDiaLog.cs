@@ -53,6 +53,7 @@ public class SettingDiaLog : Dialog
     public override void Close()
     {
         base.Close();
+        // trở lại bth sau khi tắt đi hộp thoại
         Time.timeScale = 1f;
     }
 }

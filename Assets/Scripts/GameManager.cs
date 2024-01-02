@@ -266,7 +266,9 @@ public class GameManager : SingleTon<GameManager>
     protected void Win_Update() { }
     protected void Win_Exit() { }
     protected void GameOver_Enter() { }
-    protected void GameOver_Update() { }
+    protected void GameOver_Update() {
+         
+    }
     protected void GameOver_Exit() { }
 
     #endregion
